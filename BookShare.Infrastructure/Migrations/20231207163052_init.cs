@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookShare.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -62,25 +62,6 @@ namespace BookShare.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transporters",
-                columns: table => new
-                {
-                    TransporterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DocumentType = table.Column<int>(type: "int", nullable: false),
-                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Transporters", x => x.TransporterId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -108,12 +89,11 @@ namespace BookShare.Infrastructure.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsVerified = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
                     UserType = table.Column<int>(type: "int", nullable: false),
-                    TransportId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    KycId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    KycId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -136,14 +116,7 @@ namespace BookShare.Infrastructure.Migrations
                         name: "FK_AspNetUsers_KYCs_KycId",
                         column: x => x.KycId,
                         principalTable: "KYCs",
-                        principalColumn: "KycId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Transporters_TransportId",
-                        column: x => x.TransportId,
-                        principalTable: "Transporters",
-                        principalColumn: "TransporterId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "KycId");
                 });
 
             migrationBuilder.CreateTable(
@@ -260,6 +233,32 @@ namespace BookShare.Infrastructure.Migrations
                         column: x => x.LocationId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transporters",
+                columns: table => new
+                {
+                    TransporterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DocumentType = table.Column<int>(type: "int", nullable: false),
+                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transporters", x => x.TransporterId);
+                    table.ForeignKey(
+                        name: "FK_Transporters_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -400,12 +399,8 @@ namespace BookShare.Infrastructure.Migrations
                 name: "IX_AspNetUsers_KycId",
                 table: "AspNetUsers",
                 column: "KycId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_TransportId",
-                table: "AspNetUsers",
-                column: "TransportId");
+                unique: true,
+                filter: "[KycId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -468,6 +463,11 @@ namespace BookShare.Infrastructure.Migrations
                 name: "IX_Requests_UserId",
                 table: "Requests",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transporters_UserId",
+                table: "Transporters",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -498,6 +498,9 @@ namespace BookShare.Infrastructure.Migrations
                 name: "BooksForSale");
 
             migrationBuilder.DropTable(
+                name: "Transporters");
+
+            migrationBuilder.DropTable(
                 name: "Requests");
 
             migrationBuilder.DropTable(
@@ -508,9 +511,6 @@ namespace BookShare.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "KYCs");
-
-            migrationBuilder.DropTable(
-                name: "Transporters");
         }
     }
 }
