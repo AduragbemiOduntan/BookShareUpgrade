@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  bookshare.api:
+    image: ${DOCKER_REGISTRY-}bookshareapi
+    build:
+      context: .
+      dockerfile: BookShare.Api/Dockerfile

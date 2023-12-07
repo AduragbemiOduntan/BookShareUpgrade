@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Api", "BookShare.Api\BookShare.Api.csproj", "{02191D3B-9B33-4431-B24F-B41B3182DC00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShare.Api", "BookShare.Api\BookShare.Api.csproj", "{02191D3B-9B33-4431-B24F-B41B3182DC00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Domain", "BookShare.Domain\BookShare.Domain.csproj", "{10683DF8-DDED-4066-AFC1-D6ACD5E5B7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShare.Domain", "BookShare.Domain\BookShare.Domain.csproj", "{10683DF8-DDED-4066-AFC1-D6ACD5E5B7C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Infrastructure", "BookShare.Infrastructure\BookShare.Infrastructure.csproj", "{F09B4A5A-0D3E-4229-8086-D71429736076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShare.Infrastructure", "BookShare.Infrastructure\BookShare.Infrastructure.csproj", "{F09B4A5A-0D3E-4229-8086-D71429736076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Application", "BookShare.Application\BookShare.Application.csproj", "{5868DC40-6BC3-4444-A5AD-928C8D243E24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShare.Application", "BookShare.Application\BookShare.Application.csproj", "{5868DC40-6BC3-4444-A5AD-928C8D243E24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Common", "BookShare.Common\BookShare.Common.csproj", "{4B34E3BF-76E9-42AF-BDD8-355C067D351C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShare.Common", "BookShare.Common\BookShare.Common.csproj", "{4B34E3BF-76E9-42AF-BDD8-355C067D351C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{69DEBE35-D572-4615-B83E-78846DA665D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DEBE35-D572-4615-B83E-78846DA665D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DEBE35-D572-4615-B83E-78846DA665D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DEBE35-D572-4615-B83E-78846DA665D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DEBE35-D572-4615-B83E-78846DA665D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
