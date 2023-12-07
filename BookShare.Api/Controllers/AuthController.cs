@@ -2,6 +2,7 @@
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,6 +21,8 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("signup")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> RegisterUser([FromForm] UserSignUpRequestDto requestDto)
         {
             var result = await _authService.RegisterUser(requestDto, Request);
@@ -29,6 +32,8 @@ namespace BookShare.Api.Controllers
 
 
         [HttpPost("login")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> Login([FromForm] UserLoginRequestDto requestDto)
         {
             var result = await _authService.ValidateAndCreateToken(requestDto);
@@ -36,6 +41,8 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpGet("activate-email/{email}")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> ActivateEmail(string email)
         {
             var result = await _authService.GenerateEmailActivationToken(email, Request);
@@ -43,6 +50,8 @@ namespace BookShare.Api.Controllers
 
         }
         [HttpPost("add-admin")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> AddAmin([FromForm] string email)
         {
             var result = await _authService.AddUserAsAdmin(email);
@@ -50,6 +59,8 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpGet("confirm-email/{email}/{token}")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<ContentResult> ConfirmEmail(string email, string token)
         {
             string decodedToken = WebUtility.UrlDecode(token);
