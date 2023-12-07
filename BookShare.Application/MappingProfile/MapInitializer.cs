@@ -14,6 +14,9 @@ namespace BookShare.Application.MappingProfile
     {
         public MapInitializer()
         {
+            CreateMap<DeliveryCreationDto, Delivery>();
+            CreateMap<DeliveryUpdateDto, Delivery>();
+            CreateMap<Delivery, DeliveryDto>();
             CreateMap<UserSignUpRequestDto, User>();
             CreateMap<User, UserResponseDto>();
         }

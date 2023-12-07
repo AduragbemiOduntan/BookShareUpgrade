@@ -2,6 +2,7 @@
 using BookShare.Application.Services.Abstraction;
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
+using BookShare.Common.Enum;
 using BookShare.Domain.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -42,8 +43,17 @@ namespace BookShare.Application.Services.Implementation
                 }
                 return StandardResponse<string>.Failed(errors, 401);
             }
-            //Create Transporter if this is a transporter
-            _userManager.AddToRoleAsync(user, "User");
+            string role = requestDto.UserType switch
+            {
+                UserType.Transporter => "Transporter",
+                UserType.Admin => "Admin",
+                _ => "User",
+            };
+            if(role == "Transporter")
+            {
+                //Create Transporter object if this is a transporter
+            }
+            _userManager.AddToRoleAsync(user, role);
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(token);
             string callback_url = httpRequest.Scheme + "://" + httpRequest.Host + $"/api/authentication/confirm-email/{requestDto.Email}/{encodedToken}";
@@ -71,7 +81,7 @@ namespace BookShare.Application.Services.Implementation
         {
             string logoUrl = "";
             string title = "Confirm Your Email";
-            string body = $"<html><body><br/><br/>Please click to confirm your email address for Book share. When you confirm your email you get full access to Book Share services for free.<p/> <a href={callback_url}>Verify Your Email</a> <p/><br/>Thank you for choosing DropMate.<p/><img src={logoUrl}></body></html>";
+            string body = $"<html><body><br/><br/>Please click to confirm your email address for Book share. When you confirm your email you get full access to Book Share services for free.<p/> <a href={callback_url}>Verify Your Email</a> <p/><br/>Thank you for choosing Book Share.<p/><img src={logoUrl}></body></html>";
             _emailService.SendEmail(email, title, body);
         }
 
