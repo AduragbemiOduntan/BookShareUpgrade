@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookShare.Common.Dto.Request;
+using BookShare.Common.Dto.Response;
 using BookShare.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace BookShare.Application.MappingProfile
     {
         public MapInitializer()
         {
+            CreateMap<User, UserResponseDto>();
+            CreateMap<UserUpdateRequestDto, User>();
+            CreateMap<UserCreateRequestDto, User>();
             CreateMap<DeliveryCreationDto, Delivery>();
             CreateMap<DeliveryUpdateDto, Delivery>();
             CreateMap<Delivery, DeliveryDto>();
