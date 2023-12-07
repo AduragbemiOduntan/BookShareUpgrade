@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookShare.Common.Dto.Request
 {
-    public class DeliveryDto
+    internal class BookForSaleUpdateRequestDto
     {//Required?,Maxlength and Minlength,etc
     }
 }

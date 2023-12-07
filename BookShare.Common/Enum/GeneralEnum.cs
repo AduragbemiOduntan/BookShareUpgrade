@@ -6,6 +6,7 @@
     public enum UserType
     {
         Donor_Recipient = 0,
+        Admin,
         Transporter,
     }
     public enum DocumentType
@@ -13,6 +14,19 @@
         Donor_Recipient = 0,
         Transporter,
     }
+    public enum ListingType
+    {
+        Free = 0,
+        Paid,
+    }
+     public enum BookCondition
+    {
+        Used = 0,
+        New,
+        Good,
+        Fair,
+    }
+
     public enum BookCategory
     {
         Science = 0,
