@@ -13,10 +13,10 @@ namespace BookShare.Domain.Model
         public string IsVerified { get; set; }
         public UserType UserType { get; set; }
         [ForeignKey(nameof(Transporter))]
-        public string TransportId { get; set; }
+        public string? TransportId { get; set; }
         public Transporter Transporter { get; set; }
         [ForeignKey(nameof(KYC))]
-        public string KycId { get; set; }
+        public string? KycId { get; set; }
         public KYC KYC { get; set; }
 
     }
