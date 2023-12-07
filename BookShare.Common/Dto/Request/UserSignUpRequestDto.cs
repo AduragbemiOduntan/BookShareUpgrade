@@ -10,7 +10,7 @@ namespace BookShare.Common.Dto.Request
 {
     public record UserSignUpRequestDto
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; set; }//Required?,Maxlength and Minlength,etc
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

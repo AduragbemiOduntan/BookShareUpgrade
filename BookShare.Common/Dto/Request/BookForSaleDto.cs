@@ -4,7 +4,7 @@ namespace BookShare.Common.Dto.Request
 {
     public class BookForSaleDto
     {
-        public string BookName { get; set; }
+        public string BookName { get; set; }//Required?,Maxlength and Minlength,etc
         public string Author { get; set; }
         public string? Publisher { get; set; }
         public EducationLevel? EducationLevel { get; set; }
