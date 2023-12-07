@@ -2,6 +2,7 @@
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,21 +21,19 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("signup")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> RegisterUser([FromForm] UserSignUpRequestDto requestDto)
         {
-            var result = await _authService.RegisterUser(requestDto);
-
-            string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(result.Data);
-            string callback_url = Request.Scheme + "://" + Request.Host + $"/api/authentication/confirm-email/{requestDto.Email}/{encodedToken}";
-
-            _authService.SendConfirmationEmail(requestDto.Email, callback_url);
-            result.Data = null;
-            return StatusCode(201, result);
+            var result = await _authService.RegisterUser(requestDto, Request);
+            return Ok(result);
         }
 
 
 
         [HttpPost("login")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> Login([FromForm] UserLoginRequestDto requestDto)
         {
             var result = await _authService.ValidateAndCreateToken(requestDto);
@@ -42,19 +41,17 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpGet("activate-email/{email}")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> ActivateEmail(string email)
         {
-            var result = await _authService.GenerateEmailActivationToken(email);
-
-            string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(result.Data);
-            string callback_url = Request.Scheme + "://" + Request.Host + $"/api/authentication/confirm-email/{email}/{encodedToken}";
-
-            _authService.SendConfirmationEmail(email, callback_url);
-            result.Data = null;
+            var result = await _authService.GenerateEmailActivationToken(email, Request);
             return Ok(result);
 
         }
         [HttpPost("add-admin")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> AddAmin([FromForm] string email)
         {
             var result = await _authService.AddUserAsAdmin(email);
@@ -62,6 +59,8 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpGet("confirm-email/{email}/{token}")]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<ContentResult> ConfirmEmail(string email, string token)
         {
             string decodedToken = WebUtility.UrlDecode(token);
