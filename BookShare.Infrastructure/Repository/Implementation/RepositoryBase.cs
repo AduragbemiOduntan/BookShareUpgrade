@@ -1,4 +1,5 @@
-﻿using BookShare.Infrastructure.ApplicationContext;
+﻿using BookShare.Domain.Model;
+using BookShare.Infrastructure.ApplicationContext;
 using BookShare.Infrastructure.Repository.Abstraction;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
