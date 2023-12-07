@@ -11,10 +11,10 @@ namespace BookShare.Application.Services.Implementation
 {
     public class DeliveryService : IDeliveryService
     {
-        private readonly IRepositoryBase<Book> _repository;
+        private readonly IRepositoryBase<BookForSale> _repository;
         private readonly IMapper _mapper;
 
-        public DeliveryService(IRepositoryBase<Book> repository, IMapper mapper)
+        public DeliveryService(IRepositoryBase<BookForSale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

@@ -12,10 +12,10 @@ namespace BookShare.Application.Services.Implementation
 {
     public class TransporterService : ITransporterService
     {
-        private readonly IRepositoryBase<Book> _repository;
+        private readonly IRepositoryBase<BookForSale> _repository;
         private readonly IMapper _mapper;
 
-        public TransporterService(IRepositoryBase<Book> repository, IMapper mapper)
+        public TransporterService(IRepositoryBase<BookForSale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

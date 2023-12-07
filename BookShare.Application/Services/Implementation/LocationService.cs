@@ -12,10 +12,10 @@ namespace BookShare.Application.Services.Implementation
 {
     public class LocationService : ILocationService
     {
-        private readonly IRepositoryBase<Book> _repository;
+        private readonly IRepositoryBase<BookForSale> _repository;
         private readonly IMapper _mapper;
 
-        public LocationService(IRepositoryBase<Book> repository, IMapper mapper)
+        public LocationService(IRepositoryBase<BookForSale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

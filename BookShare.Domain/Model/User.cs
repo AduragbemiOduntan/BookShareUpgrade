@@ -1,5 +1,6 @@
 ﻿using BookShare.Common.Enum;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShare.Domain.Model
 {
@@ -11,9 +12,11 @@ namespace BookShare.Domain.Model
         public string ImageUrl { get; set; }
         public string IsVerified { get; set; }
         public UserType UserType { get; set; }
-        public string KycId { get; set; }
+        [ForeignKey(nameof(Transporter))]
         public string TransportId { get; set; }
         public Transporter Transporter { get; set; }
+        [ForeignKey(nameof(KYC))]
+        public string KycId { get; set; }
         public KYC KYC { get; set; }
 
     }

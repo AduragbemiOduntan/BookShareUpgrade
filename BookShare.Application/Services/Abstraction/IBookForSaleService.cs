@@ -1,6 +1,6 @@
 ﻿namespace BookShare.Application.Services.Abstraction
 {
-    public interface IBookService
+    public interface IBookForSaleService
     {
     }
 }

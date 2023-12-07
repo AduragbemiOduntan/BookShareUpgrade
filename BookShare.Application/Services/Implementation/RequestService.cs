@@ -12,10 +12,10 @@ namespace BookShare.Application.Services.Implementation
 {
     public class RequestService : IRequestService
     {
-        private readonly IRepositoryBase<Book> _repository;
+        private readonly IRepositoryBase<BookForSale> _repository;
         private readonly IMapper _mapper;
 
-        public RequestService(IRepositoryBase<Book> repository, IMapper mapper)
+        public RequestService(IRepositoryBase<BookForSale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

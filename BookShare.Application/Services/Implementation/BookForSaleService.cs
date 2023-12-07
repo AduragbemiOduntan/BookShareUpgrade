@@ -15,12 +15,12 @@ using System.Threading.Tasks;
 
 namespace BookShare.Application.Services.Implementation
 {
-    public class BookService : IBookService
+    public class BookForSaleService : IBookForSaleService
     {
-        private readonly IRepositoryBase<Book> _repository;
+        private readonly IRepositoryBase<BookForSale> _repository;
         private readonly IMapper _mapper;
 
-        public BookService(IRepositoryBase<Book> repository, IMapper mapper)
+        public BookForSaleService(IRepositoryBase<BookForSale> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

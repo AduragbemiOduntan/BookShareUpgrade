@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShare.Application.Services.Abstraction
+namespace BookShare.Application.Services.Implementation
 {
-    public interface IDonationService
+    public class EmailService
     {
     }
 }

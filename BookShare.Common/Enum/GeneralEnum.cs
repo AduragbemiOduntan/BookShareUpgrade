@@ -18,6 +18,7 @@
         Science = 0,
         Commercial,
         Act,
+        Others
     }
     public enum Subject
     {
@@ -31,7 +32,9 @@
         Economics,
         BusinessStudies,
         Computer,
-        FurtherMathematics, //Remember to add others
+        FurtherMathematics,
+        Literature,
+        Others
     }
 
     public enum EducationLevel

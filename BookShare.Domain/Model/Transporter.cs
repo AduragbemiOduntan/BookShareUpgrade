@@ -12,8 +12,9 @@ namespace BookShare.Domain.Model
     {
         public string TransporterId { get; set; } = Guid.NewGuid().ToString();
         public string CompanyName { get; set; }
+        public string PhoneNumber { get; set; }
         public DocumentType DocumentType { get; set; }
         public string LogoUrl { get; set; }
-        public ICollection<Location> Locations { get; set; }
+        //public ICollection<Location> Locations { get; set; }
     }
 }

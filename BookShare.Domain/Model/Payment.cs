@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookShare.Domain.Model
 {
-    internal class Payment : BaseEntity
+    public class Payment : BaseEntity
     {
     }
 }

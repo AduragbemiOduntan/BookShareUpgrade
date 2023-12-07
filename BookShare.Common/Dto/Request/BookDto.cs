@@ -11,7 +11,6 @@ namespace BookShare.Common.Dto.Request
         public string BookName { get; set; }
         public string Author { get; set; }
         public string Subject { get; set; }
-        public EducationLevel EducationLevel { get; set; }
         public string BookCategory { get; set; }
         public string IsAvailable { get; set; }
         public string ImageUrl { get; set; }

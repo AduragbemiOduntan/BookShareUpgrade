@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookShare.Application.Services.Abstraction
 {
-    public interface IAuthenticationService
+    public interface IEmailService
     {
-
     }
 }
