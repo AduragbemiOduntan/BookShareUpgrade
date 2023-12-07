@@ -11,6 +11,8 @@ namespace BookShare.Api.Extension
             {
                 option.UseSqlServer(configuration.GetConnectionString("Default"));
             });
+
+
         }
     }
 }
