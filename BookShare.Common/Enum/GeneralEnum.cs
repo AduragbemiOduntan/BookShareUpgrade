@@ -6,6 +6,7 @@
     public enum UserType
     {
         Donor_Recipient = 0,
+        Admin,
         Transporter,
     }
     public enum DocumentType
