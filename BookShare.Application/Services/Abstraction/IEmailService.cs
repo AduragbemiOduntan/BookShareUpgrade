@@ -8,6 +8,8 @@ namespace BookShare.Application.Services.Abstraction
 {
     public interface IEmailService
     {
-        Task SendEmail(string email, string title, string message);
+        void SendEmail(string toAddress, string subject, string body);
+
+
     }
 }
