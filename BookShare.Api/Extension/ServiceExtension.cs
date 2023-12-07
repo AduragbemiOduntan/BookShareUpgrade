@@ -2,6 +2,8 @@
 using BookShare.Application.Services.Implementation;
 using BookShare.Domain.Model;
 using BookShare.Infrastructure.ApplicationContext;
+using BookShare.Infrastructure.Repository.Abstraction;
+using BookShare.Infrastructure.Repository.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +20,11 @@ namespace BookShare.Api.Extension
             {
                 option.UseSqlServer(configuration.GetConnectionString("Default"));
             });
+        }
+
+        public static void ConfigureRepositoryBase(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
         }
 
         public static void ConfigureApplicationServices(this IServiceCollection services)
