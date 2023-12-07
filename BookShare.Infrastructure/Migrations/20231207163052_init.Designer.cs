@@ -4,6 +4,7 @@ using BookShare.Infrastructure.ApplicationContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    partial class BookShareContextModelSnapshot : ModelSnapshot
+    [Migration("20231207163052_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -450,26 +453,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2f79fddc-6ee2-4502-8d16-8b1d65be059e",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "7e4bdd31-acc9-4398-bef9-82000823b6e4",
-                            Name = "Transporter",
-                            NormalizedName = "TRANSPORTER"
-                        },
-                        new
-                        {
-                            Id = "5614bd8b-d005-44ea-8d08-550c93a1fedc",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

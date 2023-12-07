@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookShare.Common.Dto.Request
 {
-    internal class BookForSaleUpdateRequestDto
+    public record DeliveryCreationDto : DeliveryForManipulationDto
     {
+
     }
 }

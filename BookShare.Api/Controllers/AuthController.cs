@@ -22,14 +22,8 @@ namespace BookShare.Api.Controllers
         [HttpPost("signup")]
         public async Task<IActionResult> RegisterUser([FromForm] UserSignUpRequestDto requestDto)
         {
-            var result = await _authService.RegisterUser(requestDto);
-
-            string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(result.Data);
-            string callback_url = Request.Scheme + "://" + Request.Host + $"/api/authentication/confirm-email/{requestDto.Email}/{encodedToken}";
-
-            _authService.SendConfirmationEmail(requestDto.Email, callback_url);
-            result.Data = null;
-            return StatusCode(201, result);
+            var result = await _authService.RegisterUser(requestDto, Request);
+            return Ok(result);
         }
 
 
@@ -44,13 +38,7 @@ namespace BookShare.Api.Controllers
         [HttpGet("activate-email/{email}")]
         public async Task<IActionResult> ActivateEmail(string email)
         {
-            var result = await _authService.GenerateEmailActivationToken(email);
-
-            string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(result.Data);
-            string callback_url = Request.Scheme + "://" + Request.Host + $"/api/authentication/confirm-email/{email}/{encodedToken}";
-
-            _authService.SendConfirmationEmail(email, callback_url);
-            result.Data = null;
+            var result = await _authService.GenerateEmailActivationToken(email, Request);
             return Ok(result);
 
         }
