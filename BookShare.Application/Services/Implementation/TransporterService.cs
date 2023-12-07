@@ -77,17 +77,6 @@ namespace BookShare.Application.Services.Implementation
             var transporterReturned = _mapper.Map<IEnumerable<TransportResponseDto>>(transporter);
             return StandardResponse<IEnumerable<TransportResponseDto>>.Success($"Successful", transporterReturned, 200);
         }       
-        public async Task<StandardResponse<TransportResponseDto>> FindTransporterByLocationIdAsync(string locationId)
-        {
-           var transporter = await _repository.FindByCondition(t => t.LocationId == locationId, false).SingleOrDefaultAsync();
-           if (transporter == null)
-           {
-               _logger.LogInformation("Attempting to get transporter with a location Id");
-                var errorMessage = $"Transporter not found";
-               return StandardResponse<TransportResponseDto>.Failed(errorMessage, 400);
-           }
-           var locationReturned = _mapper.Map<TransportResponseDto>(transporter);
-           return StandardResponse<TransportResponseDto>.Success($"Successfully retrieved transporter with location", locationReturned, 200);
-        }  
+       
     }
 }

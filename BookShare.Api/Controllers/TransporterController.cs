@@ -41,12 +41,6 @@ namespace BookShare.Api.Controllers
             return Ok(result);
         }
         [HttpGet("get/by/locationId")]
-        public async Task<IActionResult> FindTransporterByLocationAsync(string locationId)
-        {
-            var result = await _transporterService.FindTransporterByLocationIdAsync(locationId);
-            return Ok(result);
-        }
-        [HttpDelete("delete/transporter")]
         public async Task<IActionResult> DeeleteTransporterAsync(string id)
         {
             var result = await _transporterService.DeleteTransporterAsync(id);

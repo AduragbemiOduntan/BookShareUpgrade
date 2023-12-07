@@ -11,6 +11,5 @@ namespace BookShare.Application.Services.Abstraction
         Task<StandardResponse<TransportResponseDto>> DeleteTransporterAsync(string id);
         Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindAllTransportersAsync();
         Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindTransporterByCompanyNameAsync(string companyName);
-        Task<StandardResponse<TransportResponseDto>> FindTransporterByLocationIdAsync(string locationId);
     }
 }
