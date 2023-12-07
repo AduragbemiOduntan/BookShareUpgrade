@@ -23,7 +23,7 @@ namespace BookShare.Api.Controllers
         [HttpPost("signup")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
-        public async Task<IActionResult> RegisterUser([FromForm] UserSignUpRequestDto requestDto)
+        public async Task<IActionResult> RegisterUser([FromBody] UserSignUpRequestDto requestDto)
         {
             var result = await _authService.RegisterUser(requestDto, Request);
             return Ok(result);
@@ -34,7 +34,7 @@ namespace BookShare.Api.Controllers
         [HttpPost("login")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
-        public async Task<IActionResult> Login([FromForm] UserLoginRequestDto requestDto)
+        public async Task<IActionResult> Login([FromBody] UserLoginRequestDto requestDto)
         {
             var result = await _authService.ValidateAndCreateToken(requestDto);
             return Ok(result);
@@ -52,7 +52,7 @@ namespace BookShare.Api.Controllers
         [HttpPost("add-admin")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
-        public async Task<IActionResult> AddAmin([FromForm] string email)
+        public async Task<IActionResult> AddAmin([FromBody] string email)
         {
             var result = await _authService.AddUserAsAdmin(email);
             return StatusCode(200, result);
