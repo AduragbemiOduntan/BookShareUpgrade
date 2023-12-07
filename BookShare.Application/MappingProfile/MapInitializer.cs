@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookShare.Common.Dto.Request;
+using BookShare.Domain.Model;
 
 namespace BookShare.Application.MappingProfile
 {
     public class MapInitializer : Profile
     {
+        protected MapInitializer()
+        {
+            CreateMap<TransporterRequestDto, Transporter>();
+        }
     }
 }
