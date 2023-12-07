@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using BookShare.Common.Dto.Request;
 
 namespace BookShare.Common.Dto.Response;
 
