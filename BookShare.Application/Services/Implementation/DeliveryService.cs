@@ -16,7 +16,8 @@ namespace BookShare.Application.Services.Implementation
         private readonly IDeliveryRepository _deliveryRepository;
         private readonly IMapper _mapper;
 
-        public DeliveryService(IRepositoryBase<Delivery> repository, IMapper mapper, IDeliveryRepository deliveryRepository)
+        public DeliveryService(IRepositoryBase<Delivery> repository, IMapper mapper, 
+            IDeliveryRepository deliveryRepository)
         {
             _repository = repository;
             _mapper = mapper;
