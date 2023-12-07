@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookShare.Common.Dto.Response;
+using BookShare.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,9 @@ namespace BookShare.Application.MappingProfile
 {
     public class MapInitializer : Profile
     {
+        public MapInitializer()
+        {
+            CreateMap<Request, RequestResponseDto>().ForMember(dest=>dest.Books, opts=>opts.MapFrom(src=>src.Books));
+        }
     }
 }
