@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookShare.Common\BookShare.Common.csproj" />
+    <ProjectReference Include="..\BookShare.Domain\BookShare.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
