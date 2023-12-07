@@ -24,6 +24,7 @@ namespace BookShare.Api.Extension
         {
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ITransporterService, TransporterService>();
 
         }
         public static void ConfigureIdentity(this IServiceCollection services)
