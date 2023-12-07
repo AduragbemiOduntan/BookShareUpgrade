@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Application", "BookShare.Application\BookShare.Application.csproj", "{5868DC40-6BC3-4444-A5AD-928C8D243E24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShare.Common", "BookShare.Common\BookShare.Common.csproj", "{4B34E3BF-76E9-42AF-BDD8-355C067D351C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5868DC40-6BC3-4444-A5AD-928C8D243E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5868DC40-6BC3-4444-A5AD-928C8D243E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5868DC40-6BC3-4444-A5AD-928C8D243E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B34E3BF-76E9-42AF-BDD8-355C067D351C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
