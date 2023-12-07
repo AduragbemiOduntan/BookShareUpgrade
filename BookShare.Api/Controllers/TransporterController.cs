@@ -39,8 +39,8 @@ namespace BookShare.Api.Controllers
         {
             var result = await _transporterService.FindTransporterByCompanyNameAsync(companyName);
             return Ok(result);
-        }
-        [HttpGet("get/by/locationId")]
+        }      
+        [HttpDelete("delete/transporter")]
         public async Task<IActionResult> DeeleteTransporterAsync(string id)
         {
             var result = await _transporterService.DeleteTransporterAsync(id);

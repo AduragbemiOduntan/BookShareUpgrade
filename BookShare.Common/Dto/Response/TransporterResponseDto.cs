@@ -2,7 +2,7 @@
 
 namespace BookShare.Common.Dto.Response
 {
-    public class TransportResponseDto
+    public class TransporterResponseDto
     {
         public string CompanyName { get; set; }
         public string PhoneNumber { get; set; }

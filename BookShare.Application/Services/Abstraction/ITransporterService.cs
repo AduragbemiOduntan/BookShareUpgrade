@@ -6,10 +6,10 @@ namespace BookShare.Application.Services.Abstraction
 {
     public interface ITransporterService
     {
-        Task<StandardResponse<TransportResponseDto>> UpdateTransporterAsync(string id, bool trackChanges, TransporterRequestDto requestDto);
-        Task<StandardResponse<TransportResponseDto>> FindTransporterByIdAsync(string id);
-        Task<StandardResponse<TransportResponseDto>> DeleteTransporterAsync(string id);
-        Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindAllTransportersAsync();
-        Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindTransporterByCompanyNameAsync(string companyName);
+        Task<StandardResponse<TransporterResponseDto>> UpdateTransporterAsync(string id, bool trackChanges, TransporterRequestDto requestDto);
+        Task<StandardResponse<TransporterResponseDto>> FindTransporterByIdAsync(string id);
+        Task<StandardResponse<TransporterResponseDto>> DeleteTransporterAsync(string id);
+        Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindAllTransportersAsync();
+        Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByCompanyNameAsync(string companyName);
     }
 }

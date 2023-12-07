@@ -22,60 +22,60 @@ namespace BookShare.Application.Services.Implementation
             _mapper = mapper;
             _logger = logger;
         }
-        public async Task<StandardResponse<TransportResponseDto>> UpdateTransporterAsync(string id,bool trackChanges, TransporterRequestDto requestDto)
+        public async Task<StandardResponse<TransporterResponseDto>> UpdateTransporterAsync(string id,bool trackChanges, TransporterRequestDto requestDto)
         {
             var transporter = await _repository.FindByCondition(t => t.TransporterId ==id, false).SingleOrDefaultAsync();
             if (transporter == null)
             {
                 _logger.LogInformation("Attempting to update a transporter");
                 var errorMessage = $"Transporter does not exist";
-                return StandardResponse<TransportResponseDto>.Failed(errorMessage, 400);
+                return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
             }
             var updateTransporter = _mapper.Map<Transporter>(requestDto);
             _repository.Update(updateTransporter);
             await _repository.SaveChangesAync();
-            var transporterUpdated = _mapper.Map<TransportResponseDto>(updateTransporter);
-            return StandardResponse<TransportResponseDto>.Success($"Successfully updated Transporter", transporterUpdated, 200);
+            var transporterUpdated = _mapper.Map<TransporterResponseDto>(updateTransporter);
+            return StandardResponse<TransporterResponseDto>.Success($"Successfully updated Transporter", transporterUpdated, 200);
         }
-        public async Task<StandardResponse<TransportResponseDto>> FindTransporterByIdAsync(string id)
+        public async Task<StandardResponse<TransporterResponseDto>> FindTransporterByIdAsync(string id)
         {
             var transporter = await _repository.FindByCondition(t => t.TransporterId == id, false).SingleOrDefaultAsync();
             if (transporter == null)
             {
                 _logger.LogInformation("Attempting to find transporter by Id");
                 var errorMessage = $"Transporter does not exist";
-                return StandardResponse<TransportResponseDto>.Failed(errorMessage, 400);
+                return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
             }
-            var transporterReturned = _mapper.Map<TransportResponseDto>(transporter);
-            return StandardResponse<TransportResponseDto>.Success($"Successfully retrieved a transporter", transporterReturned, 200);
+            var transporterReturned = _mapper.Map<TransporterResponseDto>(transporter);
+            return StandardResponse<TransporterResponseDto>.Success($"Successfully retrieved a transporter", transporterReturned, 200);
         }
-        public async Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindAllTransportersAsync()
+        public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindAllTransportersAsync()
         {
             _logger.LogInformation("Attempting to get all transporters");
             var transporters = await _repository.FindAll(false).ToListAsync();
-            var transporterReturned = _mapper.Map<IEnumerable<TransportResponseDto>>(transporters);
-            return StandardResponse<IEnumerable<TransportResponseDto>>.Success($"Request successful", transporterReturned, 200);
+            var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporters);
+            return StandardResponse<IEnumerable<TransporterResponseDto>>.Success($"Request successful", transporterReturned, 200);
         }
-        public async Task<StandardResponse<TransportResponseDto>> DeleteTransporterAsync(string id)
+        public async Task<StandardResponse<TransporterResponseDto>> DeleteTransporterAsync(string id)
         {
             var transporter = await _repository.FindByCondition(t =>t.TransporterId ==id, false).SingleOrDefaultAsync();
             if (transporter == null)
             {
                 _logger.LogInformation("Attempting to delete a transporter");
                 var errorMessage = $"Transporter does not exist";
-                return StandardResponse<TransportResponseDto>.Failed(errorMessage, 400);
+                return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
             }
             _repository.Delete(transporter);
             await _repository.SaveChangesAync();
-            var transporterReturned = _mapper.Map<TransportResponseDto>(transporter);
-            return StandardResponse<TransportResponseDto>.Success($"Successfully retrieved a transporter", transporterReturned, 200);
+            var transporterReturned = _mapper.Map<TransporterResponseDto>(transporter);
+            return StandardResponse<TransporterResponseDto>.Success($"Successfully retrieved a transporter", transporterReturned, 200);
         }
-        public async Task<StandardResponse<IEnumerable<TransportResponseDto>>> FindTransporterByCompanyNameAsync(string companyName)
+        public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByCompanyNameAsync(string companyName)
         {
             _logger.LogInformation("Attempting to get transporter by company name");
             var transporter = await _repository.FindByCondition(t =>t.CompanyName ==companyName, true).ToListAsync();
-            var transporterReturned = _mapper.Map<IEnumerable<TransportResponseDto>>(transporter);
-            return StandardResponse<IEnumerable<TransportResponseDto>>.Success($"Successful", transporterReturned, 200);
+            var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporter);
+            return StandardResponse<IEnumerable<TransporterResponseDto>>.Success($"Successful", transporterReturned, 200);
         }       
        
     }
