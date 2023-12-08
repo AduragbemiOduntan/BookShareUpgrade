@@ -1,6 +1,4 @@
-﻿using BookShare.Common.Enum;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BookShare.Common.Dto.Request
 {
