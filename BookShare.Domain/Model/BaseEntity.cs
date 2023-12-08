@@ -11,6 +11,6 @@ namespace BookShare.Domain.Model
         public DateTime DateAdded { get; set; } = DateTime.UtcNow.AddHours(1);
         public DateTime DateModified { get; set; }
         public bool IsDeleted { get; set; }
-        public string CreatorId { get; set; }
+        public string? CreatorId { get; set; }
     }
 }

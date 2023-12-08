@@ -77,5 +77,11 @@ namespace BookShare.Api.Extension
                 };
             });
         }
+
+        public static void ConfigureDependencyInjection(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryBase<BookForSale>, RepositoryBase<BookForSale>>();
+            services.AddScoped<IBookForSaleService, BookForSaleService>();
+        }
     }
 }
