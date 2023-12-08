@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
       <PrivateAssets>all</PrivateAssets>
@@ -17,6 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookShare.Application\BookShare.Application.csproj" />
+    <ProjectReference Include="..\BookShare.Common\BookShare.Common.csproj" />
+    <ProjectReference Include="..\BookShare.Domain\BookShare.Domain.csproj" />
+    <ProjectReference Include="..\BookShare.Infrastructure\BookShare.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

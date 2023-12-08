@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookShare.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class UpdateMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,7 @@ namespace BookShare.Infrastructure.Migrations
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace BookShare.Infrastructure.Migrations
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -112,8 +112,8 @@ namespace BookShare.Infrastructure.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsVerified = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserType = table.Column<int>(type: "int", nullable: false),
-                    TransportId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    KycId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TransportId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    KycId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -136,14 +136,12 @@ namespace BookShare.Infrastructure.Migrations
                         name: "FK_AspNetUsers_KYCs_KycId",
                         column: x => x.KycId,
                         principalTable: "KYCs",
-                        principalColumn: "KycId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "KycId");
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Transporters_TransportId",
                         column: x => x.TransportId,
                         principalTable: "Transporters",
-                        principalColumn: "TransporterId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TransporterId");
                 });
 
             migrationBuilder.CreateTable(
@@ -244,7 +242,7 @@ namespace BookShare.Infrastructure.Migrations
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -269,24 +267,29 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     BookForSaleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BookName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BookDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EducationLevel = table.Column<int>(type: "int", nullable: true),
-                    BookCategory = table.Column<int>(type: "int", nullable: true),
+                    Publisher = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Subject = table.Column<int>(type: "int", nullable: false),
+                    BookCategory = table.Column<int>(type: "int", nullable: false),
+                    Subject1 = table.Column<int>(type: "int", nullable: false),
                     MarketPrice = table.Column<decimal>(type: "money", nullable: false),
-                    SellingPrice = table.Column<decimal>(type: "money", nullable: false),
+                    SellingPrice = table.Column<decimal>(type: "money", nullable: true),
                     ListedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BookCondition = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BookCondition = table.Column<int>(type: "int", nullable: false),
                     IsSoldOut = table.Column<bool>(type: "bit", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDisabled = table.Column<bool>(type: "bit", nullable: true),
+                    HarmfulContentCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ListingType = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LocationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RequestId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -327,7 +330,7 @@ namespace BookShare.Infrastructure.Migrations
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -400,7 +403,8 @@ namespace BookShare.Infrastructure.Migrations
                 name: "IX_AspNetUsers_KycId",
                 table: "AspNetUsers",
                 column: "KycId",
-                unique: true);
+                unique: true,
+                filter: "[KycId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_TransportId",

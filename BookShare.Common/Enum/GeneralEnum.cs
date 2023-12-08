@@ -31,15 +31,18 @@
     {
         Science = 0,
         Commercial,
-        Act,
+        Art,
+        Technology,
         Others
     }
     public enum Subject
     {
         Mathematics = 0,
+        EnvironmentalScience,
+        Philosophy,
         English,
         SocialStudies,
-        Pysics,
+        Physics,
         Chemistry,
         Accounting,
         Government,
@@ -48,6 +51,7 @@
         Computer,
         FurtherMathematics,
         Literature,
+        Environmen,talScience,
         Others
     }
 

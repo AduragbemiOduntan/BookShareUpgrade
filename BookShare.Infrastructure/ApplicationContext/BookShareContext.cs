@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +37,7 @@ namespace BookShare.Infrastructure.ApplicationContext
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
             builder.Entity<Delivery>().HasOne(d => d.User)
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         protected virtual void ConfigureConventions(ModelConfigurationBuilder modelConfigurationBuilder)
         {
