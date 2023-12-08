@@ -21,7 +21,6 @@ namespace BookShare.Application.Services.Implementation
         {
             _repository = repository;
             _mapper = mapper;
-            _deliveryRepository = deliveryRepository;
         }
 
         public async Task<StandardResponse<DeliveryDto>> CreateDelivery(DeliveryCreationDto deliveryCreationDto)

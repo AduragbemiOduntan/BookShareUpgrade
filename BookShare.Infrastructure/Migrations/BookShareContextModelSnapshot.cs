@@ -605,7 +605,7 @@ namespace BookShare.Infrastructure.Migrations
 
             modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
                 {
-                    b.Property<string>("TransporterId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CompanyName")
@@ -627,6 +627,10 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LocationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LogoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -635,13 +639,9 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("UserId");
 
-                    b.HasKey("TransporterId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Transporters");
                 });
@@ -707,6 +707,10 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TransportId")
+                        .HasColumnType("nvarchar(450)");
+
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -767,19 +771,19 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2f79fddc-6ee2-4502-8d16-8b1d65be059e",
+                            Id = "b5f24013-6485-433b-a3fc-d9473b0f37b7",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "7e4bdd31-acc9-4398-bef9-82000823b6e4",
+                            Id = "af4ae79c-ec81-429d-afb7-da9c235404be",
                             Name = "Transporter",
                             NormalizedName = "TRANSPORTER"
                         },
                         new
                         {
-                            Id = "5614bd8b-d005-44ea-8d08-550c93a1fedc",
+                            Id = "84c222a6-38a5-48a4-b366-ddc999da828d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -974,11 +978,19 @@ namespace BookShare.Infrastructure.Migrations
 
             modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
                 {
-                    b.HasOne("BookShare.Domain.Model.User", "User")
+                    b.HasOne("BookShare.Domain.Model.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("BookShare.Domain.Model.User", "User")
+                        .WithOne()
+                        .HasForeignKey("BookShare.Domain.Model.Transporter", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
 
                     b.Navigation("User");
                 });
@@ -987,7 +999,15 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
-                        .HasForeignKey("BookShare.Domain.Model.User", "KycId");
+                        .HasForeignKey("BookShare.Domain.Model.User", "KycId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
+                        .WithMany()
+                        .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("KYC");
                 });

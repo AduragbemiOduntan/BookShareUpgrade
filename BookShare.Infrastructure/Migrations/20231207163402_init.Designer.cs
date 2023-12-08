@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    [Migration("20231208074538_UpdateMigration2")]
-    partial class UpdateMigration2
+    [Migration("20231207163402_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,13 +34,11 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("BookCategory")
+                    b.Property<int?>("BookCategory")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookCondition")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BookDescription")
+                    b.Property<string>("BookCondition")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BookName")
@@ -48,6 +46,7 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -56,9 +55,8 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EducationLevel")
-                        .HasColumnType("int")
-                        .HasColumnName("Subject");
+                    b.Property<int?>("EducationLevel")
+                        .HasColumnType("int");
 
                     b.Property<string>("HarmfulContentCount")
                         .HasColumnType("nvarchar(max)");
@@ -81,10 +79,11 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("ListedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ListingType")
+                    b.Property<int?>("ListingType")
                         .HasColumnType("int");
 
                     b.Property<string>("LocationId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("MarketPrice")
@@ -96,13 +95,14 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<string>("RequestId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<decimal?>("SellingPrice")
+                    b.Property<decimal>("SellingPrice")
                         .HasColumnType("money");
 
                     b.Property<int>("Subject")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BookForSaleId");
@@ -113,11 +113,7 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BooksForSale", t =>
-                        {
-                            t.Property("Subject")
-                                .HasColumnName("Subject1");
-                        });
+                    b.ToTable("BooksForSale");
                 });
 
             modelBuilder.Entity("BookShare.Domain.Model.Delivery", b =>
@@ -130,6 +126,7 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -229,6 +226,7 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -267,6 +265,7 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -314,6 +313,7 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -578,7 +578,9 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationId");
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BookShare.Domain.Model.Request", null)
                         .WithMany("Books")
@@ -586,7 +588,9 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.HasOne("BookShare.Domain.Model.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Location");
 
