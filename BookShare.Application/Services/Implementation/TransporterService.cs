@@ -71,11 +71,6 @@ namespace BookShare.Application.Services.Implementation
         }
         public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByLocationAsync(string city, string state)
         {
-            /*if (string.IsNullOrWhiteSpace(city))
-            {
-                var errorMessage = "Company name cannot be empty or null";
-                return StandardResponse<IEnumerable<TransporterResponseDto>>.Failed(errorMessage, 400);
-            }*/
             var transporter = await _repository.FindByCondition(r => r.Location.City.Contains(city) && r.Location.State.Contains(state), true).Include(t=>t.Location).ToListAsync();
             if (transporter is null)
             {
@@ -87,11 +82,6 @@ namespace BookShare.Application.Services.Implementation
         }
         public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByCompanyNameAsync(string companyName)
         {
-            /*if(string.IsNullOrWhiteSpace(companyName))
-            {
-                var errorMessage = "Company name cannot be empty or null";
-                return StandardResponse<IEnumerable<TransporterResponseDto>>.Failed(errorMessage, 400);
-            }*/
             var transporter = await _repository.FindByCondition(t =>t.CompanyName ==companyName, true).ToListAsync();
             if (transporter is null)
             {
