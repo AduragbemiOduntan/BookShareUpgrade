@@ -17,6 +17,7 @@ namespace BookShare.Domain.Model
         public string LogoUrl { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
+        public Location Location { get; set; }
         //public ICollection<Location> Locations { get; set; }
     }
 }

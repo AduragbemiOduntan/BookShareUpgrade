@@ -14,18 +14,29 @@ namespace BookShare.Application.Services.Implementation
     {
         private readonly IRepositoryBase<Transporter> _repository;
         private readonly IMapper _mapper;
-        private readonly ILogger<TransporterService> _logger;
 
-        public TransporterService(IRepositoryBase<Transporter> repository, IMapper mapper, ILogger<TransporterService> logger)
+        public TransporterService(IRepositoryBase<Transporter> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _logger = logger;
+        }
+        public async Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterRequestDto requestDto)
+        {
+            if (requestDto is null)
+            {
+                var errorMessage = $"Transporter cannot be null";
+                return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
+            }
+            var transporter = _mapper.Map<Transporter>(requestDto);
+            await _repository.CreateAsync(transporter);
+            await _repository.SaveChangesAync();
+            var transporterReturned = _mapper.Map<TransporterResponseDto>(transporter);
+            return StandardResponse<TransporterResponseDto>.Success("Transporter created, successfully", transporterReturned, 200);
         }
         public async Task<StandardResponse<TransporterResponseDto>> UpdateTransporterAsync(string id,bool trackChanges, TransporterRequestDto requestDto)
         {
             var transporter = await _repository.FindByCondition(t => t.TransporterId ==id, false).SingleOrDefaultAsync();
-            if (transporter == null)
+            if (transporter is null)
             {
                 var errorMessage = $"Transporter does not exist";
                 return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
@@ -39,7 +50,7 @@ namespace BookShare.Application.Services.Implementation
         public async Task<StandardResponse<TransporterResponseDto>> FindTransporterByIdAsync(string id)
         {
             var transporter = await _repository.FindByCondition(t => t.TransporterId == id, false).SingleOrDefaultAsync();
-            if (transporter == null)
+            if (transporter is null)
             {
                 var errorMessage = $"Transporter does not exist";
                 return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
@@ -53,10 +64,33 @@ namespace BookShare.Application.Services.Implementation
             var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporters);
             return StandardResponse<IEnumerable<TransporterResponseDto>>.Success($"Request successful", transporterReturned, 200);
         }
+        public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByLocation(string city, string state)
+        {
+            var transporter = await _repository.FindByCondition(r => r.Location.City == city && r.Location.State == state, true).Include(city => city).ToListAsync();
+            if (transporter is null)
+            {
+                var errorMessage = $"City and State do not exist";
+                return StandardResponse<IEnumerable<TransporterResponseDto>>.Failed(errorMessage, 400);
+            }
+            var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporter);
+            return StandardResponse<IEnumerable<TransporterResponseDto>>.Success("Successful", transporterReturned, 200);
+
+        }
+        public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByCompanyNameAsync(string companyName)
+        {
+            var transporter = await _repository.FindByCondition(t =>t.CompanyName ==companyName, true).ToListAsync();
+            if (transporter is null)
+            {
+                var errorMessage = $"Company name not found";
+                return StandardResponse<IEnumerable<TransporterResponseDto>>.Failed(errorMessage, 400);
+            }
+            var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporter);
+            return StandardResponse<IEnumerable<TransporterResponseDto>>.Success($"Successful", transporterReturned, 200);
+        }
         public async Task<StandardResponse<TransporterResponseDto>> DeleteTransporterAsync(string id)
         {
-            var transporter = await _repository.FindByCondition(t =>t.TransporterId ==id, false).SingleOrDefaultAsync();
-            if (transporter == null)
+            var transporter = await _repository.FindByCondition(t => t.TransporterId == id, false).SingleOrDefaultAsync();
+            if (transporter is null)
             {
                 var errorMessage = $"Transporter does not exist";
                 return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 400);
@@ -66,11 +100,5 @@ namespace BookShare.Application.Services.Implementation
             var transporterReturned = _mapper.Map<TransporterResponseDto>(transporter);
             return StandardResponse<TransporterResponseDto>.Success($"Successfully retrieved a transporter", transporterReturned, 200);
         }
-        public async Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByCompanyNameAsync(string companyName)
-        {
-            var transporter = await _repository.FindByCondition(t =>t.CompanyName ==companyName, true).ToListAsync();
-            var transporterReturned = _mapper.Map<IEnumerable<TransporterResponseDto>>(transporter);
-            return StandardResponse<IEnumerable<TransporterResponseDto>>.Success($"Successful", transporterReturned, 200);
-        }       
     }
 }

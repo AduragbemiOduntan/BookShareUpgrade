@@ -16,10 +16,16 @@ namespace BookShare.Api.Controllers
         {
             _transporterService = transporterService;
         }
-        [HttpPut("update/transporter")]
-        public async Task<IActionResult> UpdateTransporterAsync(string id, TransporterRequestDto RequestDto)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateTransporterAsync(TransporterRequestDto requestDto)
         {
-            var result = await _transporterService.UpdateTransporterAsync(id, false, RequestDto);
+            var result = await _transporterService.CreateTransporterAsync(requestDto);
+            return Ok(result);
+        }
+        [HttpPut("update/transporter")]
+        public async Task<IActionResult> UpdateTransporterAsync(string id, TransporterRequestDto requestDto)
+        {
+            var result = await _transporterService.UpdateTransporterAsync(id, false, requestDto);
             return Ok(result);
         }
         [HttpGet("get/transporter/by/id")]
@@ -32,6 +38,12 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> FindAllTransporterAsync()
         {
             var result = await _transporterService.FindAllTransportersAsync();
+            return Ok(result);
+        }
+        [HttpGet("get/by/location")]
+        public async Task<IActionResult> FindTransporterByLocationAsync(string city, string state)
+        {
+            var result = await _transporterService.FindTransporterByLocation(city, state);
             return Ok(result);
         }
         [HttpGet("by/companyName")]
