@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookShare.Common.Dto.Request
 {
-    public class DeliveryDto
+    public record DeliveryCreationDto : DeliveryForManipulationDto
     {
+        public string CreatorId { get; set; }
     }
 }

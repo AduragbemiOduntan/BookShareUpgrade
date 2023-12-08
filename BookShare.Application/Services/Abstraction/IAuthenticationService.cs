@@ -1,5 +1,6 @@
 ﻿using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,10 @@ namespace BookShare.Application.Services.Abstraction
 {
     public interface IAuthenticationService
     {
-        Task<StandardResponse<string>> RegisterUser(UserSignUpRequestDto requestDto);
-        Task<StandardResponse<(string, UserResponseDto)>> ValidateAndCreateToken(UserLoginRequestDto requestDto);
-        void SendConfirmationEmail(string email, string callback_url);
+        Task<StandardResponse<string>> RegisterUser(UserSignUpRequestDto requestDto, HttpRequest httpRequest);
+        Task<StandardResponse<string>> ValidateAndCreateToken(UserLoginRequestDto requestDto);
         Task<StandardResponse<string>> ConfirmEmailAddress(string email, string token);
-        Task<StandardResponse<string>> GenerateEmailActivationToken(string email);
+        Task<StandardResponse<string>> GenerateEmailActivationToken(string email, HttpRequest httpRequest);
         Task<StandardResponse<string>> AddUserAsAdmin(string email);
         //void SendResetPasswordEmail(string email, string callback_url);
         //Task<string> GeneratePasswordResetToken(string email);
