@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShare.Common.Dto.Request
+namespace BookShare.Common.Dto.Response
 {
     public record DeliveryDto
     {
-
+        public string CreatorId { get; set; }
         public string RecipientName { get; set; }
 
         public decimal DeliveryPrice { get; set; }

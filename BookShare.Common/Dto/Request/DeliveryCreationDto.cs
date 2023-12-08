@@ -8,6 +8,6 @@ namespace BookShare.Common.Dto.Request
 {
     public record DeliveryCreationDto : DeliveryForManipulationDto
     {
-
+        public string CreatorId { get; set; }
     }
 }

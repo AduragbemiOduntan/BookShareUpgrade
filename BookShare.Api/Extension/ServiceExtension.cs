@@ -27,6 +27,7 @@ namespace BookShare.Api.Extension
         public static void ConfigureRepositoryBase(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped(typeof(IDeliveryRepository), typeof(DeliveryRepository));
         }
 
         public static void ConfigureApplicationServices(this IServiceCollection services)
