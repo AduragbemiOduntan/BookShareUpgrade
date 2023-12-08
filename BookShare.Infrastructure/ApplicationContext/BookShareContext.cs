@@ -37,6 +37,9 @@ namespace BookShare.Infrastructure.ApplicationContext
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
             builder.Entity<Delivery>().HasOne(d => d.User)
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Transporter>().HasKey(t => t.UserId);
+            builder.Entity<Transporter>().HasOne(t => t.User).WithOne()
+                .HasForeignKey<Transporter>(t => t.UserId);
             
         }
         protected virtual void ConfigureConventions(ModelConfigurationBuilder modelConfigurationBuilder)

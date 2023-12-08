@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    [Migration("20231207160901_OluMigration")]
-    partial class OluMigration
+    [Migration("20231208091654_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,10 +42,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BookName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -124,10 +120,6 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<string>("BookForSaleId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -225,10 +217,6 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
@@ -263,10 +251,6 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.Property<string>("RequestId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -305,14 +289,10 @@ namespace BookShare.Infrastructure.Migrations
 
             modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
                 {
-                    b.Property<string>("TransporterId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -328,6 +308,10 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LocationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LogoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -336,7 +320,9 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TransporterId");
+                    b.HasKey("UserId");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Transporters");
                 });
@@ -365,18 +351,15 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IsVerified")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
 
                     b.Property<string>("KycId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -404,9 +387,6 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TransportId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -436,8 +416,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("TransportId");
-
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
@@ -466,6 +444,26 @@ namespace BookShare.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b5f24013-6485-433b-a3fc-d9473b0f37b7",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "af4ae79c-ec81-429d-afb7-da9c235404be",
+                            Name = "Transporter",
+                            NormalizedName = "TRANSPORTER"
+                        },
+                        new
+                        {
+                            Id = "84c222a6-38a5-48a4-b366-ddc999da828d",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -659,19 +657,32 @@ namespace BookShare.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
+                {
+                    b.HasOne("BookShare.Domain.Model.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookShare.Domain.Model.User", "User")
+                        .WithOne()
+                        .HasForeignKey("BookShare.Domain.Model.Transporter", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BookShare.Domain.Model.User", b =>
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
                         .HasForeignKey("BookShare.Domain.Model.User", "KycId");
 
-                    b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
-                        .WithMany()
-                        .HasForeignKey("TransportId");
-
                     b.Navigation("KYC");
-
-                    b.Navigation("Transporter");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace BookShare.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,8 +55,7 @@ namespace BookShare.Infrastructure.Migrations
                     HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -216,8 +217,7 @@ namespace BookShare.Infrastructure.Migrations
                     LocationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -240,25 +240,30 @@ namespace BookShare.Infrastructure.Migrations
                 name: "Transporters",
                 columns: table => new
                 {
-                    TransporterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DocumentType = table.Column<int>(type: "int", nullable: false),
                     LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LocationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transporters", x => x.TransporterId);
+                    table.PrimaryKey("PK_Transporters", x => x.UserId);
                     table.ForeignKey(
                         name: "FK_Transporters_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Transporters_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
+                        principalColumn: "LocationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -269,6 +274,7 @@ namespace BookShare.Infrastructure.Migrations
                     BookForSaleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BookName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Publisher = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EducationLevel = table.Column<int>(type: "int", nullable: true),
                     BookCategory = table.Column<int>(type: "int", nullable: true),
                     Subject = table.Column<int>(type: "int", nullable: false),
@@ -278,14 +284,16 @@ namespace BookShare.Infrastructure.Migrations
                     BookCondition = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsSoldOut = table.Column<bool>(type: "bit", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDisabled = table.Column<bool>(type: "bit", nullable: true),
+                    HarmfulContentCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ListingType = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LocationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RequestId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -325,8 +333,7 @@ namespace BookShare.Infrastructure.Migrations
                     RequestId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatorId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -359,8 +366,18 @@ namespace BookShare.Infrastructure.Migrations
                         name: "FK_Deliveries_Transporters_TransporterId",
                         column: x => x.TransporterId,
                         principalTable: "Transporters",
-                        principalColumn: "TransporterId",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "84c222a6-38a5-48a4-b366-ddc999da828d", null, "Admin", "ADMIN" },
+                    { "af4ae79c-ec81-429d-afb7-da9c235404be", null, "Transporter", "TRANSPORTER" },
+                    { "b5f24013-6485-433b-a3fc-d9473b0f37b7", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -465,9 +482,9 @@ namespace BookShare.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transporters_UserId",
+                name: "IX_Transporters_LocationId",
                 table: "Transporters",
-                column: "UserId");
+                column: "LocationId");
         }
 
         /// <inheritdoc />
