@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    [Migration("20231207103046_initial")]
-    partial class initial
+    [Migration("20231208074538_UpdateMigration2")]
+    partial class UpdateMigration2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,11 +34,13 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BookCategory")
+                    b.Property<int>("BookCategory")
                         .HasColumnType("int");
 
-                    b.Property<string>("BookCondition")
-                        .IsRequired()
+                    b.Property<int>("BookCondition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BookDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BookName")
@@ -46,7 +48,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -55,13 +56,23 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EducationLevel")
-                        .HasColumnType("int");
+                    b.Property<int>("EducationLevel")
+                        .HasColumnType("int")
+                        .HasColumnName("Subject");
+
+                    b.Property<string>("HarmfulContentCount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISBN")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsDisabled")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsSoldOut")
@@ -70,28 +81,28 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("ListedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ListingType")
+                        .HasColumnType("int");
+
                     b.Property<string>("LocationId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("MarketPrice")
                         .HasColumnType("money");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
+                    b.Property<string>("Publisher")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<decimal>("SellingPrice")
+                    b.Property<decimal?>("SellingPrice")
                         .HasColumnType("money");
 
                     b.Property<int>("Subject")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BookForSaleId");
@@ -102,7 +113,11 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BooksForSale");
+                    b.ToTable("BooksForSale", t =>
+                        {
+                            t.Property("Subject")
+                                .HasColumnName("Subject1");
+                        });
                 });
 
             modelBuilder.Entity("BookShare.Domain.Model.Delivery", b =>
@@ -115,7 +130,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -215,7 +229,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -254,7 +267,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -302,7 +314,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -362,7 +373,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KycId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
@@ -396,7 +406,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TransportId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -416,7 +425,8 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("KycId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[KycId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -568,9 +578,7 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LocationId");
 
                     b.HasOne("BookShare.Domain.Model.Request", null)
                         .WithMany("Books")
@@ -578,9 +586,7 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.HasOne("BookShare.Domain.Model.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Location");
 
@@ -653,15 +659,11 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
-                        .HasForeignKey("BookShare.Domain.Model.User", "KycId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BookShare.Domain.Model.User", "KycId");
 
                     b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
                         .WithMany()
-                        .HasForeignKey("TransportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TransportId");
 
                     b.Navigation("KYC");
 

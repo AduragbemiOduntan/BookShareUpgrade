@@ -1,6 +1,4 @@
-﻿using BookShare.Common.Dto.Request;
-
-namespace BookShare.Application.Services.Abstraction
+﻿namespace BookShare.Application.Services.Abstraction
 {
     public interface IDeliveryService
     {

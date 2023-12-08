@@ -1,11 +1,7 @@
 ﻿using BookShare.Domain.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace BookShare.Infrastructure.ApplicationContext
 {
@@ -25,6 +21,7 @@ namespace BookShare.Infrastructure.ApplicationContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             builder.Entity<Delivery>().HasOne(d => d.BookForSale)
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
             builder.Entity<Delivery>().HasOne(d => d.Request)
@@ -35,6 +32,8 @@ namespace BookShare.Infrastructure.ApplicationContext
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
             builder.Entity<Delivery>().HasOne(d => d.User)
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
+            
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         protected virtual void ConfigureConventions(ModelConfigurationBuilder modelConfigurationBuilder)
         {
