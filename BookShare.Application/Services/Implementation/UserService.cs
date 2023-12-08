@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BookShare.Application.Services.Implementation
 {
-    internal sealed class UserService : IUserService
+    public sealed class UserService : IUserService
     {
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
