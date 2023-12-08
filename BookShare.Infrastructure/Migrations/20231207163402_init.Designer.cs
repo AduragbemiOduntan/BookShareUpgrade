@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    [Migration("20231207103046_initial")]
-    partial class initial
+    [Migration("20231207163402_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,10 +58,19 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<int?>("EducationLevel")
                         .HasColumnType("int");
 
+                    b.Property<string>("HarmfulContentCount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISBN")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsDisabled")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsSoldOut")
@@ -70,6 +79,9 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("ListedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ListingType")
+                        .HasColumnType("int");
+
                     b.Property<string>("LocationId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -77,8 +89,7 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<decimal>("MarketPrice")
                         .HasColumnType("money");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
+                    b.Property<string>("Publisher")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestId")
@@ -362,7 +373,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KycId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
@@ -396,7 +406,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TransportId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -416,7 +425,8 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("KycId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[KycId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -653,15 +663,11 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
-                        .HasForeignKey("BookShare.Domain.Model.User", "KycId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BookShare.Domain.Model.User", "KycId");
 
                     b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
                         .WithMany()
-                        .HasForeignKey("TransportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TransportId");
 
                     b.Navigation("KYC");
 
