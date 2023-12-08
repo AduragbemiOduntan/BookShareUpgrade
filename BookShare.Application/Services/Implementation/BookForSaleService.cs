@@ -25,7 +25,7 @@ namespace BookShare.Application.Services.Implementation
         {
             try
             {
-                if (bookRequestDto.SellingPrice == null || bookRequestDto.SellingPrice.Value == 0)
+                if (bookRequestDto.SellingPrice == null || bookRequestDto.SellingPrice == 0)
                 {
                     bookRequestDto.ListingType = ListingType.Free;
                 }
