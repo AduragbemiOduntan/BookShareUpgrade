@@ -1,12 +1,7 @@
 ﻿using BookShare.Domain.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShare.Infrastructure.ApplicationContext
 {
@@ -41,6 +36,7 @@ namespace BookShare.Infrastructure.ApplicationContext
             builder.Entity<Transporter>().HasOne(t => t.User).WithOne()
                 .HasForeignKey<Transporter>(t => t.UserId);
             
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         protected virtual void ConfigureConventions(ModelConfigurationBuilder modelConfigurationBuilder)
         {

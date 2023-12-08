@@ -1,5 +1,7 @@
 ﻿using BookShare.Application.Services.Abstraction;
+using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
+using BookShare.Common.Enum;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,13 +18,14 @@ namespace BookShare.Api.Controllers
             _bookService = bookService;
         }
 
-/*        [HttpPost]
-        public async Task<IActionResult> Post(UserLoginRequestDto requestDto)
+        [HttpPost("create-book")]
+        public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
         {
+            var result = _bookService.CreateBookAsync(bookRequestDto);
+            return Ok(result);
+        }
 
-        }*/
-
-        [HttpGet]
+        [HttpGet("all-books")]
         public async Task<IActionResult> GetAllBooksAsync()
         {
             var result = await _bookService.GetAllBooksAsync();
@@ -32,6 +35,36 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> GetBookById(string id)
         {
             var result = await _bookService.GetBookByIdAsync(id);
+            return Ok(result);
+        }
+        [HttpGet("book-category")]
+        public async Task<IActionResult> GetBookByCategory(BookCategory bookCategory)
+        {
+            var result = await _bookService.GetBookByCategoryAsync(bookCategory);
+            return Ok(result);
+        }
+          [HttpGet("book-name")]
+        public async Task<IActionResult> GetBookByName(string name)
+        {
+            var result = await _bookService.GetBooksByNameAsync(name);
+            return Ok(result);
+        }
+        [HttpGet("keyword")]
+        public async Task<IActionResult> GetBookByKeyWordAsync(string keyword)
+        {
+            var result = await _bookService.GetBookByKeyWordAsync(keyword);
+            return Ok(result);
+        }
+          [HttpGet("education-level")]
+        public async Task<IActionResult> GetBooksByEducationLevel(EducationLevel educationLevel)
+        {
+            var result = await _bookService.GetBooksByEducationLevelAsync(educationLevel);
+            return Ok(result);
+        }
+          [HttpGet("subject")]
+        public async Task<IActionResult> GetBooksBySubject(Subject subject)
+        {
+            var result = await _bookService.GetBooksBySubjectAsync(subject);
             return Ok(result);
         }
 
