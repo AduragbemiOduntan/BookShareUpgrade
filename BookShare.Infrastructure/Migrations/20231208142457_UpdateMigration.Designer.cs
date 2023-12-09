@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    [Migration("20231208074538_UpdateMigration2")]
-    partial class UpdateMigration2
+    [Migration("20231208142457_UpdateMigration")]
+    partial class UpdateMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,8 +60,8 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Subject");
 
-                    b.Property<string>("HarmfulContentCount")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte?>("HarmfulContentCount")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("ISBN")
                         .HasColumnType("nvarchar(max)");
@@ -117,6 +117,315 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             t.Property("Subject")
                                 .HasColumnName("Subject1");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            BookForSaleId = "25a9cfcc-24c3-4fe4-83ef-6f82e8704b4e",
+                            Author = "John Doe",
+                            BookCategory = 0,
+                            BookCondition = 3,
+                            BookDescription = "Economics textbook",
+                            BookName = "Introduction to Economics",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7580),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 3,
+                            ISBN = "978-0-123-45678-9",
+                            IsDeleted = false,
+                            IsDisabled = true,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7605),
+                            ListingType = 1,
+                            MarketPrice = 29.99m,
+                            SellingPrice = 19.99m,
+                            Subject = 9
+                        },
+                        new
+                        {
+                            BookForSaleId = "8eb4f536-7680-4a77-9f84-3c6ac75c77d2",
+                            Author = "Jane Smith",
+                            BookCategory = 1,
+                            BookCondition = 2,
+                            BookDescription = "Macroeconomics textbook",
+                            BookName = "Macroeconomics Explained",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7620),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 4,
+                            HarmfulContentCount = (byte)5,
+                            ISBN = "978-0-987-65432-1",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7625),
+                            ListingType = 0,
+                            MarketPrice = 39.99m,
+                            SellingPrice = 29.99m,
+                            Subject = 9
+                        },
+                        new
+                        {
+                            BookForSaleId = "3fcd4fe1-d8b7-4f9a-8625-8c92c8317409",
+                            Author = "John Doe",
+                            BookCategory = 0,
+                            BookCondition = 1,
+                            BookDescription = "Physics textbook for beginners",
+                            BookName = "Introduction to Physics",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7636),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 5,
+                            HarmfulContentCount = (byte)4,
+                            ISBN = "978-1-234-56789-0",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7642),
+                            ListingType = 1,
+                            MarketPrice = 49.99m,
+                            SellingPrice = 39.99m,
+                            Subject = 5
+                        },
+                        new
+                        {
+                            BookForSaleId = "fd6726e7-0dbb-4e4c-bc29-4cd4c6e8ecf7",
+                            Author = "Alice Johnson",
+                            BookCategory = 4,
+                            BookCondition = 3,
+                            BookDescription = "Grammar guide for language learners",
+                            BookName = "English Grammar Essentials",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7648),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 1,
+                            HarmfulContentCount = (byte)5,
+                            ISBN = "978-2-345-67890-1",
+                            IsDeleted = false,
+                            IsDisabled = true,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7652),
+                            ListingType = 1,
+                            MarketPrice = 29.99m,
+                            SellingPrice = 19.99m,
+                            Subject = 3
+                        },
+                        new
+                        {
+                            BookForSaleId = "0bb6a6f4-d16a-4fbf-bf23-926b4987ff7a",
+                            Author = "Robert Miller",
+                            BookCategory = 1,
+                            BookCondition = 2,
+                            BookDescription = "Business studies textbook",
+                            BookName = "Introduction to Business Studies",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7660),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 3,
+                            HarmfulContentCount = (byte)3,
+                            ISBN = "978-3-456-78901-2",
+                            IsDeleted = false,
+                            IsDisabled = true,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7664),
+                            ListingType = 1,
+                            MarketPrice = 34.99m,
+                            SellingPrice = 24.99m,
+                            Subject = 10
+                        },
+                        new
+                        {
+                            BookForSaleId = "1b55e794-02ce-48c4-b2a1-49770e97c158",
+                            Author = "Emily White",
+                            BookCategory = 0,
+                            BookCondition = 0,
+                            BookDescription = "Introduction to chemistry",
+                            BookName = "Chemistry Basics",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7695),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 0,
+                            ISBN = "978-4-567-89012-3",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7699),
+                            ListingType = 0,
+                            MarketPrice = 27.99m,
+                            SellingPrice = 17.99m,
+                            Subject = 6
+                        },
+                        new
+                        {
+                            BookForSaleId = "6e7e78a5-2b1e-4a71-b1a2-5b35bf7e7c2c",
+                            Author = "Michael Brown",
+                            BookCategory = 3,
+                            BookCondition = 1,
+                            BookDescription = "Introduction to computer science",
+                            BookName = "Computer Science Fundamentals",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7706),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 4,
+                            ISBN = "978-5-678-90123-4",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7710),
+                            ListingType = 0,
+                            MarketPrice = 39.99m,
+                            SellingPrice = 29.99m,
+                            Subject = 11
+                        },
+                        new
+                        {
+                            BookForSaleId = "9a1d8c0a-b7c4-43aa-89a2-9109d77477db",
+                            Author = "David Thompson",
+                            BookCategory = 4,
+                            BookCondition = 2,
+                            BookDescription = "Exploring historical events",
+                            BookName = "History Uncovered",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7716),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 5,
+                            ISBN = "978-6-789-01234-5",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7720),
+                            ListingType = 1,
+                            MarketPrice = 44.99m,
+                            SellingPrice = 34.99m,
+                            Subject = 4
+                        },
+                        new
+                        {
+                            BookForSaleId = "b3268c1b-04d0-4d07-b393-853e228f5aaf",
+                            Author = "Sophie Clark",
+                            BookCategory = 0,
+                            BookCondition = 1,
+                            BookDescription = "Fun math problems for enthusiasts",
+                            BookName = "Math Puzzles and Challenges",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7727),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 4,
+                            ISBN = "978-7-890-12345-6",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7731),
+                            ListingType = 0,
+                            MarketPrice = 19.99m,
+                            SellingPrice = 9.99m,
+                            Subject = 0
+                        },
+                        new
+                        {
+                            BookForSaleId = "3b59a7f2-91a0-4991-bb2b-3ee5d779d15b",
+                            Author = "Charlotte Williams",
+                            BookCategory = 4,
+                            BookCondition = 3,
+                            BookDescription = "A compilation of classic literature",
+                            BookName = "Literary Classics Collection",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7737),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 3,
+                            ISBN = "978-8-901-23456-7",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7741),
+                            ListingType = 1,
+                            MarketPrice = 54.99m,
+                            SellingPrice = 44.99m,
+                            Subject = 13
+                        },
+                        new
+                        {
+                            BookForSaleId = "735bf9c0-947a-4b29-b3c4-0e8eab31c34b",
+                            Author = "Daniel Turner",
+                            BookCategory = 0,
+                            BookCondition = 0,
+                            BookDescription = "Fundamental concepts of physics",
+                            BookName = "Physics for Beginners",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7748),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 0,
+                            ISBN = "978-9-012-34567-8",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7752),
+                            ListingType = 1,
+                            MarketPrice = 29.99m,
+                            SellingPrice = 19.99m,
+                            Subject = 5
+                        },
+                        new
+                        {
+                            BookForSaleId = "7e6e1b1d-7d91-45d7-a9d4-0e953ab12c3a",
+                            Author = "Olivia Davis",
+                            BookCategory = 2,
+                            BookCondition = 2,
+                            BookDescription = "Discovering the world of art",
+                            BookName = "Art Appreciation",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7758),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 1,
+                            ISBN = "978-0-111-22222-2",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7762),
+                            ListingType = 0,
+                            MarketPrice = 34.99m,
+                            SellingPrice = 24.99m,
+                            Subject = 16
+                        },
+                        new
+                        {
+                            BookForSaleId = "5f1c6d9a-3e85-46b0-b7c4-1e7df41e084e",
+                            Author = "Ryan Mitchell",
+                            BookCategory = 1,
+                            BookCondition = 1,
+                            BookDescription = "Understanding ethical business practices",
+                            BookName = "Business Ethics",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7828),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 5,
+                            ISBN = "978-3-333-44444-4",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7833),
+                            ListingType = 1,
+                            MarketPrice = 39.99m,
+                            SellingPrice = 29.99m,
+                            Subject = 10
+                        },
+                        new
+                        {
+                            BookForSaleId = "8eaa6d2b-e4cc-4c48-9205-8ef9f2c2c5b8",
+                            Author = "Emma Turner",
+                            BookCategory = 0,
+                            BookCondition = 2,
+                            BookDescription = "Exploring the environment and ecosystems",
+                            BookName = "Environmental Science",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7846),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 3,
+                            ISBN = "978-5-555-66666-6",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7851),
+                            ListingType = 0,
+                            MarketPrice = 49.99m,
+                            SellingPrice = 39.99m,
+                            Subject = 1
+                        },
+                        new
+                        {
+                            BookForSaleId = "d450b2f3-4d20-4d22-8d4e-4e6ef3a429b3",
+                            Author = "Sophia Johnson",
+                            BookCategory = 4,
+                            BookCondition = 3,
+                            BookDescription = "Introduction to philosophical concepts",
+                            BookName = "Philosophy Fundamentals",
+                            DateAdded = new DateTime(2023, 12, 8, 15, 24, 57, 445, DateTimeKind.Utc).AddTicks(7858),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EducationLevel = 4,
+                            ISBN = "978-6-666-77777-7",
+                            IsDeleted = false,
+                            IsSoldOut = false,
+                            ListedDate = new DateTime(2023, 12, 8, 14, 24, 57, 445, DateTimeKind.Utc).AddTicks(7864),
+                            ListingType = 1,
+                            MarketPrice = 24.99m,
+                            SellingPrice = 14.99m,
+                            Subject = 2
                         });
                 });
 
@@ -328,6 +637,10 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LocationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LogoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -336,7 +649,15 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("TransporterId");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Transporters");
                 });
@@ -365,18 +686,15 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IsVerified")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
 
                     b.Property<string>("KycId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -404,9 +722,6 @@ namespace BookShare.Infrastructure.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TransportId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -436,8 +751,6 @@ namespace BookShare.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("TransportId");
-
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
@@ -466,6 +779,26 @@ namespace BookShare.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "52731578-b9f0-4176-978f-5b5da5bed5d3",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "4ab0eced-84e2-4ce3-8fb9-5b5ee0200388",
+                            Name = "Transporter",
+                            NormalizedName = "TRANSPORTER"
+                        },
+                        new
+                        {
+                            Id = "246fdcbd-c119-4262-a1e1-7eee5a2df039",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -655,19 +988,32 @@ namespace BookShare.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
+                {
+                    b.HasOne("BookShare.Domain.Model.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookShare.Domain.Model.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BookShare.Domain.Model.User", b =>
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
                         .HasForeignKey("BookShare.Domain.Model.User", "KycId");
 
-                    b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
-                        .WithMany()
-                        .HasForeignKey("TransportId");
-
                     b.Navigation("KYC");
-
-                    b.Navigation("Transporter");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

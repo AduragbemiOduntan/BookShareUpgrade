@@ -5,8 +5,8 @@ using BookShare.Common.Dto.Response;
 using BookShare.Common.Enum;
 using BookShare.Domain.Model;
 using BookShare.Infrastructure.Repository.Abstraction;
-using BookShare.Infrastructure.Repository.Implementation;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace BookShare.Application.Services.Implementation
 {
@@ -23,48 +23,22 @@ namespace BookShare.Application.Services.Implementation
 
         public async Task<StandardResponse<BookResponseDto>> CreateBookAsync(BookRequestDto bookRequestDto)
         {
-            try
+                   
+            if (bookRequestDto.SellingPrice == null || bookRequestDto.SellingPrice == 0)
             {
-                if (bookRequestDto.SellingPrice == null || bookRequestDto.SellingPrice.Value == 0)
-                {
-                    bookRequestDto.ListingType = ListingType.Free;
-                }
-                else
-                {
-                    bookRequestDto.ListingType = ListingType.Paid;
-                }
-
-                var book = _mapper.Map<BookForSale>(bookRequestDto);
-                await _repository.CreateAsync(book);
-                await _repository.SaveChangesAync();
-
-                var bookDto = _mapper.Map<BookResponseDto>(book);
-                return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
+                bookRequestDto.ListingType = ListingType.Free;
             }
-            catch (Exception ex)
+            else
             {
-                return StandardResponse<BookResponseDto>.Failed("An error occurred while creating a book.", 500);
+                bookRequestDto.ListingType = ListingType.Paid;
             }
+            var book = _mapper.Map<BookForSale>(bookRequestDto);
+            await _repository.CreateAsync(book);
+            await _repository.SaveChangesAync();
+            var bookDto = _mapper.Map<BookResponseDto>(book);
+            return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
         }
-
-
-        /*        public async Task<StandardResponse<BookResponseDto>> CreateBookAsync(BookRequestDto bookRequestDto)
-                {
-                    if (bookRequestDto.SellingPrice.Value == null || bookRequestDto.SellingPrice.Value == 0)
-                    {
-                        bookRequestDto.ListingType = ListingType.Free;
-                    }
-                    else
-                    {
-                        bookRequestDto.ListingType = ListingType.Paid;
-                    }
-                    var book = _mapper.Map<BookForSale>(bookRequestDto);
-                    await _repository.CreateAsync(book);
-                    await _repository.SaveChangesAync();
-                    var bookDto = _mapper.Map<BookResponseDto>(book);
-                    return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
-                }*/
-
+        //-----> 
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetAllBooksAsync()
         {
             var books = await _repository.FindAll(false).ToListAsync();
@@ -83,7 +57,8 @@ namespace BookShare.Application.Services.Implementation
             }
             if (book.IsDisabled == true)
             {
-                var errorMsg = $"Book is disabled due to harmful content.";
+
+                var errorMsg = $"Book is disabled";
                 return StandardResponse<BookResponseDto>.Failed(errorMsg, 400);
             }
             if (book.IsSoldOut == true)
@@ -91,9 +66,15 @@ namespace BookShare.Application.Services.Implementation
                 var errorMsg = $"This book is sold out";
                 return StandardResponse<BookResponseDto>.Failed(errorMsg, 400);
             }
+            if (book.IsDeleted == true)
+            {
+                var errorMsg = $"This book is deleted";
+                return StandardResponse<BookResponseDto>.Failed(errorMsg, 400);
+            }
             var bookDto = _mapper.Map<BookResponseDto>(book);
             return StandardResponse<BookResponseDto>.Success("Request successful", bookDto, 200);
         }
+
 
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBookByCategoryAsync(BookCategory bookCategory)
         {
@@ -105,6 +86,45 @@ namespace BookShare.Application.Services.Implementation
                 return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
             }
 
+            var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
+            return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
+        }
+        public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByUserId(string id)
+        {
+            var books = await _repository.FindAll(false).Where(x => x.UserId == id)
+               .OrderBy(x => x.BookName).ToListAsync();
+            if (books is null || !books.Any())
+            {
+                var errorMsg = $"No book with the specified user ID exist at the moment.";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
+            }
+            if (books is null || !books.Any())
+            {
+                var errorMsg = $"No book with the specified user ID exist at the moment.";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
+            }
+            var result = books.Any().Equals(books.Where(x => x.IsDisabled == true));
+            if (books.Any().Equals(books.Where(x => x.IsDisabled == true)))
+            {
+                foreach (var book in books)
+                {
+                    /* books.Where(x => x.IsDisabled == true);*/
+                    if (book.IsDisabled == true)
+                    {
+                        string bookId = book.BookForSaleId;
+                        string bookName = book.BookName;
+                        var message = DisableBookAsync(bookName, bookId);
+                    }
+                }
+
+               /* var errorMsg = $"Book is disabled due to harmful content.";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);*/
+            }
+       /*     if (books.Any().Equals(books.Where(x => x.IsDisabled == true)))
+            {
+                var errorMsg = $"This book is sold out";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
+            }*/
             var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
             return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
         }
@@ -147,6 +167,20 @@ namespace BookShare.Application.Services.Implementation
             var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
             return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
         }
+        public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByListingTypeAsync(ListingType listingType)
+        {
+            var books = await _repository.FindAll(false).Where(x => x.ListingType == listingType)
+             .OrderBy(x => x.BookName).ToListAsync();
+            if (books is null || !books.Any())
+            {
+                var errorMsg = $"No book with the specified listing type {listingType} exist at the moment.";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
+            }
+
+            var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
+            return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
+        }
+
 
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBookByKeyWordAsync(string keyword)
         {
@@ -169,7 +203,7 @@ namespace BookShare.Application.Services.Implementation
              x.BookDescription.Contains(keyword) ||
              x.Author.Contains(keyword) ||
              x.Publisher.Contains(keyword) ||
-         /*    x.Subject.CompareTo(keyword).ToString().Contains(keyword, StringComparison.OrdinalIgnoreCase) ||*/ 
+             /*    x.Subject.CompareTo(keyword).ToString().Contains(keyword, StringComparison.OrdinalIgnoreCase) ||*/
              x.ISBN.Contains(keyword)
          /*    x.ListingType.CompareTo(keyword).ToString().Contains(keyword, StringComparison.OrdinalIgnoreCase) */
          )
@@ -185,5 +219,14 @@ namespace BookShare.Application.Services.Implementation
             return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
         }
 
+        public async Task<StandardResponse<string>> DisableBookAsync(string bookName, string bookId)
+        {
+            const int maxCount = 5;
+            var book = await _repository.FindByCondition
+                (x => x.BookForSaleId == bookId && x.BookName == bookName && x.HarmfulContentCount == maxCount, false)
+               .FirstOrDefaultAsync();
+            
+            return StandardResponse<string>.Success($"Request successful, however book {book.BookName} has been deactivated", book.BookName.ToString(), 200);
+        }
     }
 }

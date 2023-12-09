@@ -27,7 +27,7 @@ namespace BookShare.Api.Extension
         public static void ConfigureRepositoryBase(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-            services.AddScoped(typeof(IDeliveryRepository), typeof(DeliveryRepository));
+            services.AddScoped <IDeliveryRepository, DeliveryRepository>();
         }
 
         public static void ConfigureApplicationServices(this IServiceCollection services)
@@ -36,6 +36,8 @@ namespace BookShare.Api.Extension
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ITransporterService, TransporterService>();
             services.AddScoped<IDeliveryService, DeliveryService>();
+            services.AddScoped<IBookForSaleService, BookForSaleService>();
+
 
         }
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -76,12 +78,6 @@ namespace BookShare.Api.Extension
                     SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
-        }
-
-        public static void ConfigureDependencyInjection(this IServiceCollection services)
-        {
-            services.AddScoped<IRepositoryBase<BookForSale>, RepositoryBase<BookForSale>>();
-            services.AddScoped<IBookForSaleService, BookForSaleService>();
         }
     }
 }

@@ -50,7 +50,15 @@ namespace BookShare.Infrastructure.Repository.Implementation
 
         public async Task SaveChangesAync()
         {
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }
