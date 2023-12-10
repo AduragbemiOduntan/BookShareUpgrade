@@ -27,7 +27,7 @@ namespace BookShare.Domain.Model
         public ListingType ListingType { get; set; }
         /*public string PhoneNumber { get; set; }*///Why is this here?
         [ForeignKey(nameof(User))]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
         public virtual User? User { get; set; }
         [ForeignKey(nameof(Location))]
         public string? LocationId { get; set; }

@@ -129,7 +129,7 @@ namespace BookShare.Application.Services.Implementation
             var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
             return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
         }
-        public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByUserId(string id)
+        /*public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByUserId(string id)
         {
             var books = await _repository.FindAll(false).Where(x => x.UserId == id)
                .OrderBy(x => x.BookName).ToListAsync();
@@ -148,7 +148,7 @@ namespace BookShare.Application.Services.Implementation
             {
                 foreach (var book in books)
                 {
-                    /* books.Where(x => x.IsDisabled == true);*/
+                    *//* books.Where(x => x.IsDisabled == true);*//*
                     if (book.IsDisabled == true)
                     {
                         string bookId = book.BookForSaleId;
@@ -157,17 +157,17 @@ namespace BookShare.Application.Services.Implementation
                     }
                 }
 
-               /* var errorMsg = $"Book is disabled due to harmful content.";
-                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);*/
+               *//* var errorMsg = $"Book is disabled due to harmful content.";
+                return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);*//*
             }
-       /*     if (books.Any().Equals(books.Where(x => x.IsDisabled == true)))
+       *//*     if (books.Any().Equals(books.Where(x => x.IsDisabled == true)))
             {
                 var errorMsg = $"This book is sold out";
                 return StandardResponse<ICollection<BookResponseDto>>.Failed(errorMsg, 400);
-            }*/
+            }*//*
             var booksDto = _mapper.Map<ICollection<BookResponseDto>>(books);
             return StandardResponse<ICollection<BookResponseDto>>.Success("Request successful", booksDto, 200);
-        }
+        }*/
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByNameAsync(string bookName)
         {
             var books = await _repository.FindAll(false).Where(x => x.BookName == bookName)
