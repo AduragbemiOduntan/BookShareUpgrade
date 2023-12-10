@@ -139,7 +139,7 @@ namespace BookShare.Api.Controllers
                             <div class=""verified-text"">Verified Successfully</div>
         
                             <!-- ""Welcome to DropMate Delivery"" text -->
-                            <div class=""dropmate-text"">Welcome to DropMate Delivery</div>
+                            <div class=""dropmate-text"">Welcome to Book share</div>
                         </div>
                     </body>
                     </html>";
@@ -194,13 +194,13 @@ namespace BookShare.Api.Controllers
                     <body>
                         <div class=""verification-container"">
                             <!-- Checkmark icon -->
-                            <div class=""checkmark"">&#10003;</div>
+                            <div class=""checkmark"">&#x2715;</div>
         
                             <!-- ""Email Verified"" text -->
-                            <div class=""verified-text"">Verified Successfully</div>
+                            <div class=""verified-text"">Verified Failed</div>
         
                             <!-- ""Welcome to DropMate Delivery"" text -->
-                            <div class=""dropmate-text"">Welcome to DropMate Delivery</div>
+                            <div class=""dropmate-text"">Failed</div>
                         </div>
                     </body>
                     </html>";
