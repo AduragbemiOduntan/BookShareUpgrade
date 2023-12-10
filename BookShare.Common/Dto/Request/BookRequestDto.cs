@@ -23,13 +23,11 @@ namespace BookShare.Common.Dto.Request
    /*     [Range(0.01, double.MaxValue, ErrorMessage = "Selling price must be greater than zero")]*/
         public decimal SellingPrice { get; set; }
         [DataType(DataType.Date), Required(ErrorMessage = "Listed date is required")]
-        public DateTime ListedDate { get; set; }
-        [Required(ErrorMessage = "Book condition is required")]
         public BookCondition BookCondition { get; set; }
         [MaxLength(200, ErrorMessage = "Image URL cannot exceed 200 characters")]
         public string? ImageUrl { get; set; }
-        [MaxLength(13, ErrorMessage = "ISBN cannot exceed 13 characters")]
-        public string? ISBN { get; set; }
+/*        [MaxLength(13, ErrorMessage = "ISBN cannot exceed 13 characters")]
+        public string? ISBN { get; set; }*/
         [Required(ErrorMessage = "Listing type is required")]
         public ListingType ListingType { get; set; }
     }

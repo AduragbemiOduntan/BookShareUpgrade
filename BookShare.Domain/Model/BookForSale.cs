@@ -23,11 +23,11 @@ namespace BookShare.Domain.Model
         public string? ImageUrl { get; set; }
         public string? ISBN { get; set; }
         public bool? IsDisabled { get; set; } //Later add enum stating reason why book is diabled
-        public string? HarmfulContentCount { get; set; }
+        public byte? HarmfulContentCount { get; set; }
         public ListingType ListingType { get; set; }
         /*public string PhoneNumber { get; set; }*///Why is this here?
         [ForeignKey(nameof(User))]
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
         public virtual User? User { get; set; }
         [ForeignKey(nameof(Location))]
         public string? LocationId { get; set; }

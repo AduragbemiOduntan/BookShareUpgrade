@@ -44,9 +44,6 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
@@ -57,8 +54,8 @@ namespace BookShare.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Subject");
 
-                    b.Property<string>("HarmfulContentCount")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte?>("HarmfulContentCount")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("ISBN")
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +75,7 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<DateTime>("ListedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ListingType")
+                    b.Property<int>("ListingType")
                         .HasColumnType("int");
 
                     b.Property<string>("LocationId")
@@ -125,13 +122,14 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 3,
                             BookDescription = "Economics textbook",
                             BookName = "Introduction to Economics",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6689),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9238),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 3,
                             ISBN = "978-0-123-45678-9",
                             IsDeleted = false,
+                            IsDisabled = true,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6709),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9272),
                             ListingType = 1,
                             MarketPrice = 29.99m,
                             SellingPrice = 19.99m,
@@ -145,13 +143,14 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 2,
                             BookDescription = "Macroeconomics textbook",
                             BookName = "Macroeconomics Explained",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6714),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9286),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 4,
+                            HarmfulContentCount = (byte)5,
                             ISBN = "978-0-987-65432-1",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6717),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9291),
                             ListingType = 0,
                             MarketPrice = 39.99m,
                             SellingPrice = 29.99m,
@@ -165,13 +164,14 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 1,
                             BookDescription = "Physics textbook for beginners",
                             BookName = "Introduction to Physics",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6721),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9305),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 5,
+                            HarmfulContentCount = (byte)4,
                             ISBN = "978-1-234-56789-0",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6723),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9310),
                             ListingType = 1,
                             MarketPrice = 49.99m,
                             SellingPrice = 39.99m,
@@ -185,13 +185,15 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 3,
                             BookDescription = "Grammar guide for language learners",
                             BookName = "English Grammar Essentials",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6725),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9319),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 1,
+                            HarmfulContentCount = (byte)5,
                             ISBN = "978-2-345-67890-1",
                             IsDeleted = false,
+                            IsDisabled = true,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6727),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9324),
                             ListingType = 1,
                             MarketPrice = 29.99m,
                             SellingPrice = 19.99m,
@@ -205,13 +207,15 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 2,
                             BookDescription = "Business studies textbook",
                             BookName = "Introduction to Business Studies",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6759),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9333),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 3,
+                            HarmfulContentCount = (byte)3,
                             ISBN = "978-3-456-78901-2",
                             IsDeleted = false,
+                            IsDisabled = true,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6761),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9339),
                             ListingType = 1,
                             MarketPrice = 34.99m,
                             SellingPrice = 24.99m,
@@ -225,13 +229,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 0,
                             BookDescription = "Introduction to chemistry",
                             BookName = "Chemistry Basics",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6764),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9348),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 0,
                             ISBN = "978-4-567-89012-3",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6767),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9353),
                             ListingType = 0,
                             MarketPrice = 27.99m,
                             SellingPrice = 17.99m,
@@ -245,13 +249,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 1,
                             BookDescription = "Introduction to computer science",
                             BookName = "Computer Science Fundamentals",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6770),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9361),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 4,
                             ISBN = "978-5-678-90123-4",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6772),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9366),
                             ListingType = 0,
                             MarketPrice = 39.99m,
                             SellingPrice = 29.99m,
@@ -265,13 +269,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 2,
                             BookDescription = "Exploring historical events",
                             BookName = "History Uncovered",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6776),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9389),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 5,
                             ISBN = "978-6-789-01234-5",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6777),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9393),
                             ListingType = 1,
                             MarketPrice = 44.99m,
                             SellingPrice = 34.99m,
@@ -285,13 +289,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 1,
                             BookDescription = "Fun math problems for enthusiasts",
                             BookName = "Math Puzzles and Challenges",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6782),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9402),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 4,
                             ISBN = "978-7-890-12345-6",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6784),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9406),
                             ListingType = 0,
                             MarketPrice = 19.99m,
                             SellingPrice = 9.99m,
@@ -305,13 +309,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 3,
                             BookDescription = "A compilation of classic literature",
                             BookName = "Literary Classics Collection",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6787),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9415),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 3,
                             ISBN = "978-8-901-23456-7",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6789),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9419),
                             ListingType = 1,
                             MarketPrice = 54.99m,
                             SellingPrice = 44.99m,
@@ -325,13 +329,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 0,
                             BookDescription = "Fundamental concepts of physics",
                             BookName = "Physics for Beginners",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6792),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9427),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 0,
                             ISBN = "978-9-012-34567-8",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6793),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9431),
                             ListingType = 1,
                             MarketPrice = 29.99m,
                             SellingPrice = 19.99m,
@@ -345,13 +349,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 2,
                             BookDescription = "Discovering the world of art",
                             BookName = "Art Appreciation",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6797),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9439),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 1,
                             ISBN = "978-0-111-22222-2",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6798),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9443),
                             ListingType = 0,
                             MarketPrice = 34.99m,
                             SellingPrice = 24.99m,
@@ -365,13 +369,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 1,
                             BookDescription = "Understanding ethical business practices",
                             BookName = "Business Ethics",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6802),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9451),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 5,
                             ISBN = "978-3-333-44444-4",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6803),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9455),
                             ListingType = 1,
                             MarketPrice = 39.99m,
                             SellingPrice = 29.99m,
@@ -385,13 +389,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 2,
                             BookDescription = "Exploring the environment and ecosystems",
                             BookName = "Environmental Science",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6806),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9463),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 3,
                             ISBN = "978-5-555-66666-6",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6808),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9467),
                             ListingType = 0,
                             MarketPrice = 49.99m,
                             SellingPrice = 39.99m,
@@ -405,13 +409,13 @@ namespace BookShare.Infrastructure.Migrations
                             BookCondition = 3,
                             BookDescription = "Introduction to philosophical concepts",
                             BookName = "Philosophy Fundamentals",
-                            DateAdded = new DateTime(2023, 12, 8, 8, 46, 39, 35, DateTimeKind.Utc).AddTicks(6811),
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 574, DateTimeKind.Utc).AddTicks(9474),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EducationLevel = 4,
                             ISBN = "978-6-666-77777-7",
                             IsDeleted = false,
                             IsSoldOut = false,
-                            ListedDate = new DateTime(2023, 12, 8, 7, 46, 39, 35, DateTimeKind.Utc).AddTicks(6812),
+                            ListedDate = new DateTime(2023, 12, 10, 14, 32, 3, 574, DateTimeKind.Utc).AddTicks(9479),
                             ListingType = 1,
                             MarketPrice = 24.99m,
                             SellingPrice = 14.99m,
@@ -427,9 +431,6 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<string>("BookForSaleId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -527,9 +528,6 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
@@ -564,9 +562,6 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.Property<string>("RequestId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
@@ -605,14 +600,11 @@ namespace BookShare.Infrastructure.Migrations
 
             modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
                 {
-                    b.Property<string>("TransporterId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatorId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -627,6 +619,9 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LocationId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LogoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -635,15 +630,46 @@ namespace BookShare.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("UserId");
 
-                    b.HasKey("TransporterId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Transporters");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "25d73632-0715-40df-aec6-e4833dacdca6",
+                            CompanyName = "Doretta and Company",
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 575, DateTimeKind.Utc).AddTicks(7289),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DocumentType = 1,
+                            IsDeleted = false,
+                            LogoUrl = "https://cdn.dribbble.com/userupload/4706150/file/original-637a80baa0d74e38e81a889b589b4761.jpg",
+                            PhoneNumber = "09044553323"
+                        },
+                        new
+                        {
+                            UserId = "b017365a-2f2d-463d-8707-66a9b590839a",
+                            CompanyName = "On The Move Inc",
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 575, DateTimeKind.Utc).AddTicks(7363),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DocumentType = 1,
+                            IsDeleted = false,
+                            LogoUrl = "https://cdn.dribbble.com/userupload/4706150/file/original-637a80baa0d74e38e81a889b589b4761.jpg",
+                            PhoneNumber = "09056653323"
+                        },
+                        new
+                        {
+                            UserId = "e62dfff9-e41d-426c-acda-f0638d5d9d5b",
+                            CompanyName = "On The Move Inc",
+                            DateAdded = new DateTime(2023, 12, 10, 15, 32, 3, 575, DateTimeKind.Utc).AddTicks(7376),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DocumentType = 1,
+                            IsDeleted = false,
+                            LogoUrl = "https://cdn.dribbble.com/userupload/4706150/file/original-637a80baa0d74e38e81a889b589b4761.jpg",
+                            PhoneNumber = "09056653323"
+                        });
                 });
 
             modelBuilder.Entity("BookShare.Domain.Model.User", b =>
@@ -736,6 +762,62 @@ namespace BookShare.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b0c6aaed-43ec-4364-b8c7-f6368ac1f34f",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d3a242ad-ad77-449d-afa8-99ae12322a9b",
+                            Email = "ddunphie0@amazon.com",
+                            EmailConfirmed = true,
+                            FirstName = "Doretta",
+                            ImageUrl = "https://thumbs.dreamstime.com/z/attractive-serious-african-american-lady-6620517.jpg",
+                            IsVerified = false,
+                            LastName = "Dunphie",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e4a99c3c-e994-468e-af38-8948c1f929fc",
+                            TwoFactorEnabled = false,
+                            UserId = "25d73632-0715-40df-aec6-e4833dacdca6",
+                            UserType = 2
+                        },
+                        new
+                        {
+                            Id = "d7b17747-3e99-410c-8d4a-e3b2b9fc05b3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "64c1bb84-6c58-4bf8-82ab-bd3578486393",
+                            Email = "cmounch1@behance.net",
+                            EmailConfirmed = true,
+                            FirstName = "Chane",
+                            ImageUrl = "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
+                            IsVerified = false,
+                            LastName = "Mounch",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "69a61ca6-fe2c-4b94-b2f4-04790864ef2c",
+                            TwoFactorEnabled = false,
+                            UserId = "b017365a-2f2d-463d-8707-66a9b590839a",
+                            UserType = 2
+                        },
+                        new
+                        {
+                            Id = "69894d68-4f61-4a49-b884-ff1dcc50e917",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "22fcef9a-26f8-4424-bec5-5be7b2fa0416",
+                            Email = "pwalesby2@addthis.com",
+                            EmailConfirmed = true,
+                            FirstName = "Pyotr",
+                            ImageUrl = "https://thumbs.dreamstime.com/z/attractive-serious-african-american-lady-6620517.jpg",
+                            IsVerified = false,
+                            LastName = "Walesby",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6123680a-1edd-4e65-a90d-724ed3ee556f",
+                            TwoFactorEnabled = false,
+                            UserId = "e62dfff9-e41d-426c-acda-f0638d5d9d5b",
+                            UserType = 2
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -767,19 +849,19 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2f79fddc-6ee2-4502-8d16-8b1d65be059e",
+                            Id = "8517e139-85d0-4eb9-baf5-4dd3e96e9961",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "7e4bdd31-acc9-4398-bef9-82000823b6e4",
+                            Id = "42946241-268b-4f1f-9ab4-a6fd6357ea8e",
                             Name = "Transporter",
                             NormalizedName = "TRANSPORTER"
                         },
                         new
                         {
-                            Id = "5614bd8b-d005-44ea-8d08-550c93a1fedc",
+                            Id = "55e46840-6af0-4c2f-b380-534640cd70a0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -974,13 +1056,11 @@ namespace BookShare.Infrastructure.Migrations
 
             modelBuilder.Entity("BookShare.Domain.Model.Transporter", b =>
                 {
-                    b.HasOne("BookShare.Domain.Model.User", "User")
+                    b.HasOne("BookShare.Domain.Model.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LocationId");
 
-                    b.Navigation("User");
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("BookShare.Domain.Model.User", b =>

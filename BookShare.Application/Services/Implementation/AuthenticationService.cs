@@ -20,12 +20,14 @@ namespace BookShare.Application.Services.Implementation
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly IConfiguration _configuration;
-        public AuthenticationService(UserManager<User> userManager, IMapper mapper, IEmailService emailService, IConfiguration configuration)
+        private readonly ITransporterService _transporterService;
+        public AuthenticationService(UserManager<User> userManager, IMapper mapper, IEmailService emailService, IConfiguration configuration, ITransporterService transporterService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _emailService = emailService;
             _configuration = configuration;
+            _transporterService = transporterService;
         }
 
         public async Task<StandardResponse<string>> RegisterUser(UserSignUpRequestDto requestDto, HttpRequest httpRequest)
@@ -51,7 +53,13 @@ namespace BookShare.Application.Services.Implementation
             };
             if(role == "Transporter")
             {
-                //Create Transporter object if this is a transporter
+                await _transporterService.CreateTransporterAsync(new TransporterRequestDto
+                {
+                    UserId = user.Id,
+                    CompanyName = requestDto.CompanyName,
+                    PhoneNumber = requestDto.PhoneNumber
+                });
+
             }
             _userManager.AddToRoleAsync(user, role);
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -81,7 +89,8 @@ namespace BookShare.Application.Services.Implementation
         {
             string logoUrl = "";
             string title = "Confirm Your Email";
-            string body = $"<html><body><br/><br/>Please click to confirm your email address for Book share. When you confirm your email you get full access to Book Share services for free.<p/> <a href={callback_url}>Verify Your Email</a> <p/><br/>Thank you for choosing Book Share.<p/><img src={logoUrl}></body></html>";
+            string body1 = $"<html><body><br/><br/>Please click to confirm your email address for Book share. When you confirm your email you get full access to Book Share services for free.<p/> <a href={callback_url}>Verify Your Email</a> <p/><br/>Thank you for choosing Book Share.<p/><img src={logoUrl}></body></html>";
+            string body = $"<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Email Confirmation - Book Share</title>\r\n  <style>\r\n    body {{\r\n      font-family: 'Arial', sans-serif;\r\n      background-color: #f4f4f4;\r\n      margin: 0;\r\n      padding: 0;\r\n      text-align: center;\r\n    }}\r\n\r\n    .container {{\r\n      max-width: 600px;\r\n      margin: 20px auto;\r\n      background-color: #fff;\r\n      padding: 20px;\r\n      border-radius: 8px;\r\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n    }}\r\n\r\n    h1 {{\r\n      color: #3498db;\r\n    }}\r\n\r\n    p {{\r\n      color: #555;\r\n      margin: 10px 0;\r\n    }}\r\n\r\n    .btn {{\r\n      display: inline-block;\r\n      padding: 10px 20px;\r\n      background-color: #3498db;\r\n      color: #fff;\r\n      text-decoration: none;\r\n      border-radius: 5px;\r\n      margin-top: 20px;\r\n    }}\r\n\r\n    .logo {{\r\n      display: block;\r\n      margin: 20px auto;\r\n      max-width: 100%;\r\n      height: auto;\r\n    }}\r\n  </style>\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <!-- Logo -->\r\n    <img class=\"logo\" src=\"{{logoUrl}}\" alt=\"Book Share Logo\" style=\"display: block; margin: 20px auto; max-width: 100%; height: auto;\">\r\n\r\n    <h1>Email Confirmation - Book Share</h1>\r\n    <p>Please click to confirm your email address for Book Share. When you confirm your email, you get full access to Book Share services for free.</p>\r\n    <a class=\"btn\" href=\"{{callback_url}}\">Verify Your Email</a>\r\n    <p>Thank you for choosing Book Share.</p>\r\n  </div>\r\n</body>\r\n</html>";
             _emailService.SendEmail(email, title, body);
         }
 
