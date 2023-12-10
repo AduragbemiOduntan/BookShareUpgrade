@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookShare.Infrastructure.Repository.Implementation
 {
-    internal sealed class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
         private readonly DbSet<User> _user;
         public UserRepository(BookShareContext bookShareContext): base(bookShareContext)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace BookShare.Common.Dto.Response
 {
@@ -69,8 +64,6 @@ namespace BookShare.Common.Dto.Response
             return new StandardResponse<T> { Succeeded = false, Message = message, Data = data, StatusCode = statusCode };
         }
 
-
-
-        public override string ToString() => JsonSerializer.Serialize(this);
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }
