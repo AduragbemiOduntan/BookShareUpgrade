@@ -733,6 +733,10 @@ namespace BookShare.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TransportId")
+                        .HasColumnType("nvarchar(450)");
+
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -1067,7 +1071,15 @@ namespace BookShare.Infrastructure.Migrations
                 {
                     b.HasOne("BookShare.Domain.Model.KYC", "KYC")
                         .WithOne("User")
-                        .HasForeignKey("BookShare.Domain.Model.User", "KycId");
+                        .HasForeignKey("BookShare.Domain.Model.User", "KycId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookShare.Domain.Model.Transporter", "Transporter")
+                        .WithMany()
+                        .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("KYC");
                 });

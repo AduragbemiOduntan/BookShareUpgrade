@@ -16,16 +16,6 @@ public class MapInitializer : Profile
 {
     public MapInitializer()
     {
-        CreateMap<DeliveryCreationDto, Delivery>();
-        CreateMap<DeliveryUpdateDto, Delivery>();
-        CreateMap<Delivery, DeliveryDto>();
-        CreateMap<UserSignUpRequestDto, User>();
-        CreateMap<User, UserResponseDto>();
-        CreateMap<TransporterRequestDto, Transporter>();
-        CreateMap<Transporter, TransporterResponseDto>();
-        CreateMap<Request, RequestResponseDto>().ForMember(dest => dest.Books, opts => opts.MapFrom(src => src.Books));
-        CreateMap<BookForSale, BookRequestDto>();
-        CreateMap<BookRequestDto, BookForSale>();
-        CreateMap<BookForSale, BookResponseDto>();
+       
     }
 }
