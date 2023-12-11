@@ -2,8 +2,10 @@
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
 using BookShare.Common.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BookShare.Api.Controllers
 {
@@ -21,7 +23,8 @@ namespace BookShare.Api.Controllers
         [HttpPost("create-book")]
         public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
         {
-            var result = await _bookService.CreateBookAsync(bookRequestDto);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.CreateBookAsync("asssww2233", bookRequestDto);
             return Ok(result);
         }
 
@@ -73,10 +76,11 @@ namespace BookShare.Api.Controllers
             var result = await _bookService.GetBooksByListingTypeAsync(listingType);
             return Ok(result);
         }
-         [HttpGet("user-id")]
-        public async Task<IActionResult> GetBooksByUserId(string id)
+         [HttpGet("user-id/{userId}")]
+        public async Task<IActionResult> GetBooksByUserId(string userId)
         {
-            var result = await _bookService.GetBooksByUserId(id);
+           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }
 /*         [HttpGet("user-id")]

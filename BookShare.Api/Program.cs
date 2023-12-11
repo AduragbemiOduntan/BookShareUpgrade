@@ -11,6 +11,7 @@ builder.Services.ConfigureRepositoryBase();
 builder.Services.ConfigureApplicationServices();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.ConfigureSwaggerAuth();
 
 
 
