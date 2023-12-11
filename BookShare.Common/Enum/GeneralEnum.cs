@@ -19,7 +19,7 @@
         Free = 0,
         Paid,
     }
-     public enum BookCondition
+    public enum BookCondition
     {
         Used = 0,
         New,
@@ -29,11 +29,14 @@
 
     public enum BookCategory
     {
-        Science = 0,
-        Commercial,
-        Art,
-        Technology,
-        Others
+        TextBook = 0,
+        Novel,
+        Article,
+        /*     Science = 0,
+             Commercial,
+             Art,
+             Technology,
+             Others*/
     }
     public enum Subject
     {
@@ -51,7 +54,7 @@
         Computer,
         FurtherMathematics,
         Literature,
-        Environmen,talScience,
+        Environmen, talScience,
         Others
     }
 

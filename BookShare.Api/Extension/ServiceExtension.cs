@@ -21,8 +21,6 @@ namespace BookShare.Api.Extension
             {
                 option.UseSqlServer(configuration.GetConnectionString("Default"));
             });
-
-
         }
 
         public static void ConfigureRepositoryBase(this IServiceCollection services)
@@ -40,9 +38,7 @@ namespace BookShare.Api.Extension
             services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IBookForSaleService, BookForSaleService>();
             services.AddScoped<IUserService, UserService>();
-            
-
-
+            services.AddScoped<IRequestService, RequestService>();
 
         }
         public static void ConfigureIdentity(this IServiceCollection services)
