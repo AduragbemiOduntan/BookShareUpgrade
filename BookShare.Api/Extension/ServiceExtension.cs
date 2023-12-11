@@ -20,8 +20,6 @@ namespace BookShare.Api.Extension
             {
                 option.UseSqlServer(configuration.GetConnectionString("Default"));
             });
-
-
         }
 
         public static void ConfigureRepositoryBase(this IServiceCollection services)

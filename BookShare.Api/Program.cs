@@ -1,5 +1,3 @@
-
-
 using BookShare.Api.Extension;
 using BookShare.Application.MappingProfile;
 
