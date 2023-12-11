@@ -4,6 +4,7 @@ using BookShare.Infrastructure.ApplicationContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShare.Infrastructure.Migrations
 {
     [DbContext(typeof(BookShareContext))]
-    partial class BookShareContextModelSnapshot : ModelSnapshot
+    [Migration("20231211171817_firstMigration")]
+    partial class firstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,14 +123,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "b946508d-6a67-4f2e-93b0-2f1d15cb482e\r\n",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2231),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7804),
                             BookDescription = "Comprehensive introduction to economic theories and principles.",
                             BookName = "An Introduction to Economics",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2247),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7817),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/qsTTbGv",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2245),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7816),
                             ListingType = 1,
                             MarketPrice = 8000.00m,
                             SellingPrice = 2000.00m
@@ -136,14 +139,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "f7c8e0ae-3fb7-4e49-a42d-59b40698665a",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2273),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7840),
                             BookDescription = "In-depth exploration of business concepts and strategies.",
                             BookName = "Business Studies",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2273),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7840),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/m45tnVm",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2273),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7840),
                             ListingType = 1,
                             MarketPrice = 9000.00m,
                             SellingPrice = 4000.00m
@@ -152,14 +155,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "9b03f725-521f-4a90-9f4a-7c5b89c2465c",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2278),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7844),
                             BookDescription = "An engaging collection of literary masterpieces.",
                             BookName = "Literature",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2278),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7845),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/WVzW49p",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2278),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7845),
                             ListingType = 1,
                             MarketPrice = 2499.99m,
                             SellingPrice = 1299.99m
@@ -168,14 +171,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "90a1eb50-5e54-41b2-b5b9-5d3d25f7e031",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2282),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7860),
                             BookDescription = "A beginner-friendly guide to computer programming.",
                             BookName = "Computer Programming for Beginners",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2283),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7861),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/Q6XsX4J",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2283),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7860),
                             ListingType = 1,
                             MarketPrice = 5999.99m,
                             SellingPrice = 2999.99m
@@ -184,14 +187,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "e40bb26b-6f9b-4a53-b8dd-0c1cfb9daee2",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2347),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7864),
                             BookDescription = "Exploring the rich tapestry of global historical events.",
                             BookName = "World History",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2348),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7865),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/ZhBXwtS",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2348),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7864),
                             ListingType = 1,
                             MarketPrice = 2999.99m,
                             SellingPrice = 1499.99m
@@ -200,14 +203,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "c93cf864-d273-44d2-98b3-b36138de7b9b",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2352),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7868),
                             BookDescription = "Practical insights and experiments in the field of chemistry.",
                             BookName = "Master Practical Chemistry",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2352),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7869),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/qDDskmB",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2352),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7869),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
                             SellingPrice = 0.00m
@@ -216,14 +219,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "1cfc1884-2aae-4ac1-97c5-27f408f140f3",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2357),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7873),
                             BookDescription = "Comprehensive physics guide for SSCE and UTME exams.",
                             BookName = "SSCE and UTME Physics",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2357),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7874),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/NTMt2Sv",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2357),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7873),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -232,14 +235,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "a39b8e55-7a88-4912-9d08-45b33c550a6e",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2361),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7877),
                             BookDescription = "In-depth study of organic chemistry principles and reactions.",
                             BookName = "Organic Chemistry",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2362),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7878),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/ncsvd1j",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2361),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7878),
                             ListingType = 0,
                             MarketPrice = 4499.99m,
                             SellingPrice = 0.00m
@@ -248,14 +251,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "55f7d2a7-3b49-4e87-88c0-6c88e2a0e17c",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2365),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7881),
                             BookDescription = "Comprehensive guide to general mathematical concepts.",
                             BookName = "New General Mathematics",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2366),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7882),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/6RkfmFB",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2365),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7881),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -264,14 +267,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "d764f82c-e4e1-4e50-825e-54c8b8b8eeb1",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2369),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7885),
                             BookDescription = "Physics textbook designed for modern school curricula.",
                             BookName = "New School Physics",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2370),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7886),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/QFmGNjR",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2370),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7885),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
                             SellingPrice = 0.00m
@@ -280,14 +283,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "f1af480b-44a0-48d1-a20d-d2e1b3bd46d4",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2373),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7889),
                             BookDescription = "Embark on a riveting journey through the intricate interplay of democracy and education, where societal ideals clash and harmonize.",
                             BookName = "Democracy and Education",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2374),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7890),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/7Vb2yM0",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2374),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7889),
                             ListingType = 1,
                             MarketPrice = 8000.00m,
                             SellingPrice = 2000.00m
@@ -296,14 +299,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "418f2b38-ae9e-49a8-9a8d-2ee99c8355cc",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2377),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7895),
                             BookDescription = "A heartwarming novel that unfolds the transformative impact of a dedicated teacher on the lives of students, inspiring them to overcome challenges and achieve greatness.",
                             BookName = "Because of a Teacher",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2378),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7895),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/NTWqctd",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2378),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7895),
                             ListingType = 1,
                             MarketPrice = 9000.00m,
                             SellingPrice = 4000.00m
@@ -312,14 +315,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "a5454a2a-6e34-4a35-8e54-8789ee849c4b",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2383),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7898),
                             BookDescription = "Immerse yourself in a captivating tale that explores the birth of innovators, tracing their journeys through challenges, creativity, and the relentless pursuit of groundbreaking ideas.",
                             BookName = "Creating Innovators",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2384),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7899),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/PQTcDJv",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2384),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7899),
                             ListingType = 1,
                             MarketPrice = 2499.99m,
                             SellingPrice = 1299.99m
@@ -328,14 +331,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "64a4c5a1-7782-4b4e-90b2-704dcd9d8d24",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2388),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7929),
                             BookDescription = "Experience the gripping narrative of a group of stranded boys on a deserted island, as they grapple with power dynamics, morality, and the primal instincts that emerge in their struggle for survival.",
                             BookName = "Lord of the Flies",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2388),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7930),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/NTPFxRr",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2388),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7930),
                             ListingType = 1,
                             MarketPrice = 5999.99m,
                             SellingPrice = 2999.99m
@@ -344,14 +347,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "2f19959b-458f-42f8-927d-45ad1d66a2d8",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2392),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7934),
                             BookDescription = "Step into the intriguing world of education, where societal norms and disparities come to light, shaping the experiences of learners from different walks of life.",
                             BookName = "How the Other Half Learns",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2393),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7935),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/mvpjYLb",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2393),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7934),
                             ListingType = 1,
                             MarketPrice = 2999.99m,
                             SellingPrice = 1499.99m
@@ -360,14 +363,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "878a3464-58b1-49b4-bdc3-ea201b6ac6ae",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2396),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7938),
                             BookDescription = "Embark on a literary journey that explores the intricacies of personal and academic growth, as characters navigate the challenges of self-discovery within the realm of education.",
                             BookName = "My Education",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2397),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7939),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/TgzzWF3",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2397),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7938),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
                             SellingPrice = 0.00m
@@ -376,14 +379,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "3b1cc8f3-69e2-4ec0-8522-2c4e01b529c2",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2400),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7942),
                             BookDescription = "Dive into a thought-provoking narrative that envisions the future of education, its transformative power, and the impact it leaves on the last generation of graduates in a changing world.",
                             BookName = "The Last Graduate",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2401),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7943),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/tKhXZVh",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2401),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7943),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -392,14 +395,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "aa12e4eb-40a8-4cd8-837d-3dd207f56b97",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2404),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7947),
                             BookDescription = "Experience the enchanting tale of a journey through science and technology, where small yet impactful teaching methods lead to profound discoveries and innovations.",
                             BookName = "Small Teaching",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2405),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7947),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/1XQJC2M",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2405),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7947),
                             ListingType = 0,
                             MarketPrice = 4499.99m,
                             SellingPrice = 0.00m
@@ -408,14 +411,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "1a4ee5f0-0eab-4fe5-97e3-b0485c17384a",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2409),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7951),
                             BookDescription = "Embark on a captivating exploration of general educational studies, where the ladder to success is built with knowledge, insights, and a comprehensive understanding of key concepts.",
                             BookName = "Laddering Your Success",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2410),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7952),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/NZstpRt",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2409),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7951),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -424,14 +427,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "b79b1c76-1fb0-4a44-a758-0b6e524f245b",
                             BookCategory = 1,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2413),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7958),
                             BookDescription = "Delve into the enthralling narrative of academic disciplines intersecting within the realm of education, symbolized by the reflective 'Mirror' and the illuminating 'Lamp' guiding the way.",
                             BookName = "The Mirror and the Lamp",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2414),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7959),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/vz6pGWg",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2413),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7958),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
                             SellingPrice = 0.00m
@@ -440,14 +443,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "d0cde2d1-e9f7-4b1a-8a84-04ee55fb4a7e",
                             BookCategory = 2,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2419),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7962),
                             BookDescription = "A collection of short articles designed to enhance reading comprehension skills.",
                             BookName = "Short Articles for Reading Comprehension",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2420),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7963),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/x35LZ3s",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2419),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7963),
                             ListingType = 1,
                             MarketPrice = 8000.00m,
                             SellingPrice = 2000.00m
@@ -456,14 +459,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "4f33e4a3-2cb2-4ef9-9839-862fc58f64cd",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2453),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7968),
                             BookDescription = "Understanding business concepts and strategies for enhancing international student employability.",
                             BookName = "International Student Employability",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2454),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7969),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/s2pTv7W",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2453),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7968),
                             ListingType = 1,
                             MarketPrice = 9000.00m,
                             SellingPrice = 4000.00m
@@ -472,14 +475,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "7e4ed35f-e1a5-4a2a-baad-b6a6a2a8b5bb",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2458),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7972),
                             BookDescription = "An insightful journal exploring the intersection of business and education.",
                             BookName = "Business Education Journal",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2459),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7973),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/wKk93Fq",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2458),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7972),
                             ListingType = 1,
                             MarketPrice = 2499.99m,
                             SellingPrice = 1299.99m
@@ -488,14 +491,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "f78b929f-71cc-4fb2-b0d8-3188194c73f3",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2463),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7976),
                             BookDescription = "A guide to navigating online teaching and learning challenges during the Covid-19 pandemic.",
                             BookName = "Online Teaching and Learning in Higher Education during Covid-19",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2463),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7976),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/N97d49F",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2463),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7976),
                             ListingType = 1,
                             MarketPrice = 5999.99m,
                             SellingPrice = 2999.99m
@@ -504,14 +507,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "4b2c2c2c-3888-4214-9a3a-fa3075b9a373",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2467),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7980),
                             BookDescription = "Exploring the profound impact of global historical events on society.",
                             BookName = "Impact",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2468),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7981),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/WvtS13k",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2467),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7980),
                             ListingType = 1,
                             MarketPrice = 2999.99m,
                             SellingPrice = 1499.99m
@@ -520,14 +523,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "e4d9c0b1-7c6c-4eb1-9f5d-7c0195d2bf88",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2472),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7984),
                             BookDescription = "Mastering essential words to enhance vocabulary and language skills.",
                             BookName = "504 Absolutely Essential Words",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2472),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7984),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/PFMYxSn",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2472),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7984),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
                             SellingPrice = 0.00m
@@ -536,14 +539,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "0f8b75ef-5795-4f04-843a-7feae7661f01",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2476),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7988),
                             BookDescription = "Exploring innovative approaches to development in various fields.",
                             BookName = "Journal of Development and Innovation",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2477),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7988),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/Z6zLqwD",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2476),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7988),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -552,14 +555,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "5f68d2e2-7ce6-4310-bd29-9a46e5b60949",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2480),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7993),
                             BookDescription = "In-depth study of science and technology principles.",
                             BookName = "Research in Science and Technological Education",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2481),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7994),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/DWT5wQm",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2481),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7994),
                             ListingType = 0,
                             MarketPrice = 4499.99m,
                             SellingPrice = 0.00m
@@ -568,14 +571,14 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "6e6de32d-0682-4f5a-96d4-96c2f77f8f98",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2487),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7997),
                             BookDescription = "Comprehensive guide to general educational studies and their concepts.",
                             BookName = "Educational Studies",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2487),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(7998),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/8YQLsfx",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2487),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(7997),
                             ListingType = 0,
                             MarketPrice = 3999.99m,
                             SellingPrice = 0.00m
@@ -584,17 +587,17 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             BookForSaleId = "c45330b1-d6b3-4a7a-8f92-4f33a11b3195",
                             BookCategory = 0,
-                            BookCreationId = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2492),
+                            BookCreationId = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(8001),
                             BookDescription = "Explore the dynamic intersection of various academic disciplines within the realm of education.",
                             BookName = "Journal of Interdisciplinary Studies in Education",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(2492),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Utc).AddTicks(8002),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://ibb.co/SmJkzYp",
                             IsDeleted = false,
-                            ListedDate = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Local).AddTicks(2492),
+                            ListedDate = new DateTime(2023, 12, 11, 18, 18, 17, 425, DateTimeKind.Local).AddTicks(8001),
                             ListingType = 0,
                             MarketPrice = 3499.99m,
-                            SellingPrice = 0.00m
+                            SellingPrice = 1799.99m
                         });
                 });
 
@@ -816,7 +819,7 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             UserId = "25d73632-0715-40df-aec6-e4833dacdca6",
                             CompanyName = "Doretta and Company",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(5837),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 426, DateTimeKind.Utc).AddTicks(278),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DocumentType = 1,
                             IsDeleted = false,
@@ -827,7 +830,7 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             UserId = "b017365a-2f2d-463d-8707-66a9b590839a",
                             CompanyName = "On The Move Inc",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(5869),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 426, DateTimeKind.Utc).AddTicks(304),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DocumentType = 1,
                             IsDeleted = false,
@@ -838,7 +841,7 @@ namespace BookShare.Infrastructure.Migrations
                         {
                             UserId = "e62dfff9-e41d-426c-acda-f0638d5d9d5b",
                             CompanyName = "On The Move Inc",
-                            DateAdded = new DateTime(2023, 12, 11, 18, 23, 5, 365, DateTimeKind.Utc).AddTicks(5874),
+                            DateAdded = new DateTime(2023, 12, 11, 18, 18, 17, 426, DateTimeKind.Utc).AddTicks(309),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DocumentType = 1,
                             IsDeleted = false,
@@ -941,9 +944,9 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "714b5c33-216f-4958-aa92-40ad9aa43912",
+                            Id = "d9055518-042f-4edb-af4e-fb406a59888b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d03d911b-4a50-4692-b4f6-fbdd5e71e015",
+                            ConcurrencyStamp = "bf6bf002-d4ae-441f-a17a-fea74d332e57",
                             Email = "ddunphie0@amazon.com",
                             EmailConfirmed = true,
                             FirstName = "Doretta",
@@ -952,16 +955,16 @@ namespace BookShare.Infrastructure.Migrations
                             LastName = "Dunphie",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3916744b-7e66-443a-bb20-aeabb9f50021",
+                            SecurityStamp = "e96394bd-5391-425f-9e70-88f009552192",
                             TwoFactorEnabled = false,
                             UserId = "25d73632-0715-40df-aec6-e4833dacdca6",
                             UserType = 2
                         },
                         new
                         {
-                            Id = "0aa1e278-d70d-474d-b19a-5115a408551d",
+                            Id = "918549d8-bc16-4b1c-8c58-5a7130aed815",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e0ee281d-8ab2-464e-8315-79f7477ce85b",
+                            ConcurrencyStamp = "e544901f-0a8e-4b00-bdca-0e49c128c2bb",
                             Email = "cmounch1@behance.net",
                             EmailConfirmed = true,
                             FirstName = "Chane",
@@ -970,16 +973,16 @@ namespace BookShare.Infrastructure.Migrations
                             LastName = "Mounch",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "914624ea-13e1-4db9-80f1-e3ca598f3acf",
+                            SecurityStamp = "52a5b2e3-487c-4044-95a1-8b5dbe130be9",
                             TwoFactorEnabled = false,
                             UserId = "b017365a-2f2d-463d-8707-66a9b590839a",
                             UserType = 2
                         },
                         new
                         {
-                            Id = "deb89161-642b-4348-9982-1943ce0afef5",
+                            Id = "b91cbc79-498a-4378-87ea-547574a0befe",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7a9e0af8-2eb4-4000-ad19-b5e4bbad0e37",
+                            ConcurrencyStamp = "95a2d923-174b-4070-ac17-d05fd041822d",
                             Email = "pwalesby2@addthis.com",
                             EmailConfirmed = true,
                             FirstName = "Pyotr",
@@ -988,7 +991,7 @@ namespace BookShare.Infrastructure.Migrations
                             LastName = "Walesby",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d3fda26-10a8-4f90-b80e-a0af3682ce17",
+                            SecurityStamp = "5e831d5e-0280-41ec-810c-c5ecc0e547bd",
                             TwoFactorEnabled = false,
                             UserId = "e62dfff9-e41d-426c-acda-f0638d5d9d5b",
                             UserType = 2
@@ -1024,19 +1027,19 @@ namespace BookShare.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dd74ae65-8750-4859-991f-a62517a700ba",
+                            Id = "6b07b7e9-8a36-4c9c-98ee-9cc30306214e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "18affb8b-20fa-4ad8-836d-c05d65049936",
+                            Id = "3fda14c9-bdbb-4dc8-a0aa-9772b04bebf9",
                             Name = "Transporter",
                             NormalizedName = "TRANSPORTER"
                         },
                         new
                         {
-                            Id = "417576b7-bf4e-4a6f-979d-bdf5ab0a8da9",
+                            Id = "14f9c5ba-0a14-462d-bd31-a0f5ea7a3b5c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

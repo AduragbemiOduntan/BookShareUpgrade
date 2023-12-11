@@ -7,12 +7,12 @@ namespace BookShare.Infrastructure.ApplicationContext
 {
     public class BookShareContext : IdentityDbContext<User>
     {
-        public BookShareContext(DbContextOptions options) :base(options)
+        public BookShareContext(DbContextOptions options) : base(options)
         {
         }
         public DbSet<User> Users { get; set; }
         public DbSet<BookForSale> BooksForSale { get; set; }
-        public DbSet<Delivery> Deliveries  { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<KYC> KYCs { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Request> Requests { get; set; }
