@@ -39,6 +39,7 @@ internal sealed class RequestService : IRequestService
         if (requestDto.IsPickUp) { request.IsPickUp = true; }
         await _requestRepository.CreateAsync(request);
         await _requestRepository.SaveChangesAync();
+        //call the transport service and delivery service to facilitate delivery
         var requestResponseDto = _mapper.Map<RequestResponseDto>(request);
         return StandardResponse<RequestResponseDto>.Success("Request created", requestResponseDto, 201);
     }

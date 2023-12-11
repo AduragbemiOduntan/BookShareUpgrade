@@ -20,11 +20,6 @@ namespace BookShare.Application.Services.Implementation
         }
         public async Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterRequestDto requestDto)
         {
-            if (requestDto is null)
-            {
-                var errorMessage = $"Transporter cannot be null";
-                return StandardResponse<TransporterResponseDto>.Failed(errorMessage, 401);
-            }
             Transporter transporter = new Transporter();
             {
                 transporter.CompanyName = requestDto.CompanyName;

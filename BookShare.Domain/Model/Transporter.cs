@@ -18,10 +18,11 @@ namespace BookShare.Domain.Model
         public DocumentType DocumentType { get; set; } = DocumentType.Transporter;
         public string LogoUrl { get; set; }
         [Key]
-        [ForeignKey(nameof(User))]
+        //[ForeignKey(nameof(User))]
         public string UserId { get; set; }
-        public User User { get; set; }
-        public Location Location { get; set; }
+        //public User User { get; set; }
+        public string? LocationId { get; set; }
+        public virtual Location? Location { get; set; }
         //public ICollection<Location> Locations { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace BookShare.Infrastructure.Configuration
                         },
                         new Transporter
                         {
-                            UserId = new Guid("b017365a-2f2d-463d-8707-66a9b590839a").ToString(),
+                            UserId = new Guid("e62dfff9-e41d-426c-acda-f0638d5d9d5b").ToString(),
                             CompanyName = "On The Move Inc",
                             PhoneNumber = "09056653323",
                             DocumentType = DocumentType.Transporter,
