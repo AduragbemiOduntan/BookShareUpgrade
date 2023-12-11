@@ -32,13 +32,15 @@ internal sealed class RequestService : IRequestService
         }
         var request = new Request()
         {
-            UserId = userId,
+            //UserId = userId,
+            UserId = requestDto.UserId,
             LocationId = requestDto.LocationId,
             Books = books
         };
         if (requestDto.IsPickUp) { request.IsPickUp = true; }
         await _requestRepository.CreateAsync(request);
         await _requestRepository.SaveChangesAync();
+        //call the transport service and delivery service to facilitate delivery
         var requestResponseDto = _mapper.Map<RequestResponseDto>(request);
         return StandardResponse<RequestResponseDto>.Success("Request created", requestResponseDto, 201);
     }

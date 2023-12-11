@@ -2,8 +2,10 @@
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
 using BookShare.Common.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BookShare.Api.Controllers
 {
@@ -21,7 +23,8 @@ namespace BookShare.Api.Controllers
         [HttpPost("create-book")]
         public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
         {
-            var result = _bookService.CreateBookAsync(bookRequestDto);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.CreateBookAsync("asssww2233", bookRequestDto);
             return Ok(result);
         }
 
@@ -43,7 +46,7 @@ namespace BookShare.Api.Controllers
             var result = await _bookService.GetBookByCategoryAsync(bookCategory);
             return Ok(result);
         }
-          [HttpGet("book-name")]
+        [HttpGet("book-name")]
         public async Task<IActionResult> GetBookByName(string name)
         {
             var result = await _bookService.GetBooksByNameAsync(name);
@@ -55,18 +58,37 @@ namespace BookShare.Api.Controllers
             var result = await _bookService.GetBookByKeyWordAsync(keyword);
             return Ok(result);
         }
-          [HttpGet("education-level")]
+        [HttpGet("education-level")]
         public async Task<IActionResult> GetBooksByEducationLevel(EducationLevel educationLevel)
         {
             var result = await _bookService.GetBooksByEducationLevelAsync(educationLevel);
             return Ok(result);
         }
-          [HttpGet("subject")]
+        [HttpGet("subject")]
         public async Task<IActionResult> GetBooksBySubject(Subject subject)
         {
             var result = await _bookService.GetBooksBySubjectAsync(subject);
             return Ok(result);
         }
+        [HttpGet("listing-type")]
+        public async Task<IActionResult> GetBooksByListingType(ListingType listingType)
+        {
+            var result = await _bookService.GetBooksByListingTypeAsync(listingType);
+            return Ok(result);
+        }
+         [HttpGet("user-id/{userId}")]
+        public async Task<IActionResult> GetBooksByUserId(string userId)
+        {
+           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.GetBooksByUserId(userId);
+            return Ok(result);
+        }
+/*         [HttpGet("user-id")]
+        public async Task<IActionResult> GetBooksByUserId(string id)
+        {
+            var result = await _bookService.GetBooksByUserId(id);
+            return Ok(result);
+        }*/
 
     }
 }

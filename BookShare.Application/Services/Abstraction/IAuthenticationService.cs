@@ -12,7 +12,7 @@ namespace BookShare.Application.Services.Abstraction
     public interface IAuthenticationService
     {
         Task<StandardResponse<string>> RegisterUser(UserSignUpRequestDto requestDto, HttpRequest httpRequest);
-        Task<StandardResponse<string>> ValidateAndCreateToken(UserLoginRequestDto requestDto);
+        Task<StandardResponse<LoginResponseDto>> ValidateAndCreateToken(UserLoginRequestDto requestDto);
         Task<StandardResponse<string>> ConfirmEmailAddress(string email, string token);
         Task<StandardResponse<string>> GenerateEmailActivationToken(string email, HttpRequest httpRequest);
         Task<StandardResponse<string>> AddUserAsAdmin(string email);

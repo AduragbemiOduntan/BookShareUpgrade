@@ -28,5 +28,7 @@ namespace BookShare.Common.Dto.Request
         public string Password { get; set; }
         [Range(0,2,ErrorMessage ="Must be in range 0-2")]
         public UserType UserType { get; set; }
+        public string? CompanyName { get; set; }//Transporter only
+        public string? PhoneNumber { get; set; }//Transporter only
     }
 }

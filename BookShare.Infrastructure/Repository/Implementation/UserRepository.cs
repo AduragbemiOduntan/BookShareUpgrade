@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookShare.Infrastructure.Repository.Implementation
 {
-    internal sealed class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
         private readonly DbSet<User> _user;
         public UserRepository(BookShareContext bookShareContext): base(bookShareContext)
@@ -30,7 +30,7 @@ namespace BookShare.Infrastructure.Repository.Implementation
 
         public async Task<User> GetByEmailAsync(string email, bool trackChanges)
         {
-            return await _user.Where(u => u.Email.Contains(email, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefaultAsync();
+            return await _user.Where(u => u.Email.ToLower().Contains(email.ToLower())).FirstOrDefaultAsync();
         }
 
         public async Task<User> GetByIdAsync(string id)

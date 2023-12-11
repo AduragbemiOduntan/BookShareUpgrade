@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace BookShare.Api.Extension
@@ -27,7 +28,8 @@ namespace BookShare.Api.Extension
         public static void ConfigureRepositoryBase(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-            services.AddScoped(typeof(IDeliveryRepository), typeof(DeliveryRepository));
+            services.AddScoped <IDeliveryRepository, DeliveryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         public static void ConfigureApplicationServices(this IServiceCollection services)
@@ -36,6 +38,11 @@ namespace BookShare.Api.Extension
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ITransporterService, TransporterService>();
             services.AddScoped<IDeliveryService, DeliveryService>();
+            services.AddScoped<IBookForSaleService, BookForSaleService>();
+            services.AddScoped<IUserService, UserService>();
+            
+
+
 
         }
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -77,11 +84,37 @@ namespace BookShare.Api.Extension
                 };
             });
         }
-
-        public static void ConfigureDependencyInjection(this IServiceCollection services)
+        public static void ConfigureSwaggerAuth(this IServiceCollection services)
         {
-            services.AddScoped<IRepositoryBase<BookForSale>, RepositoryBase<BookForSale>>();
-            services.AddScoped<IBookForSaleService, BookForSaleService>();
+            services.AddSwaggerGen(opt =>
+            {
+                //opt.SchemaFilter<EnumSchemaFilter>();
+                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter an access token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
+                
+            });
         }
     }
 }
