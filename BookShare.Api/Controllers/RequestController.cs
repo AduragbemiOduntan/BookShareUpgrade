@@ -40,7 +40,7 @@ public class RequestController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPut("confirm-request-received")]//User
+    [HttpPut("confirm-request-received")]//User 
     public async Task<IActionResult> ConfirmRequestReceived([FromBody] string requestId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -48,19 +48,19 @@ public class RequestController : ControllerBase
         return Ok(response);
     }
 
-    [HttpGet("user-requests-by-userid")]//User
-    public async Task<IActionResult> GetAllUserRequestByUserId()
+    [HttpGet("user-requests-by-userid/{userId}")]//User
+    public async Task<IActionResult> GetAllUserRequestByUserId(string userId)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var response = await _requestService.GetAllUserRequestsByUserId(userId);
         return Ok(response);
     }
-    [HttpGet("user-requests-by-userid/admin/{userId}")]//Admin
+    /*[HttpGet("user-requests-by-userid/admin/{userId}")]//Admin
     public async Task<IActionResult> GetAllUserRequestByUserId([FromQuery] string userId)
     {
         var response = await _requestService.GetAllUserRequestsByUserId(userId);
         return Ok(response);
-    }
+    }*/
 
     [HttpGet("user-request-by-requestid/{requestId}")]//User
     public async Task<IActionResult> GetUserRequestByRequestId([FromQuery] string requestId)
