@@ -22,7 +22,7 @@ namespace BookShare.Api.Controllers
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
-        public async Task<IActionResult> CreateTransporterAsync(TransporterRequestDto requestDto)
+        public async Task<IActionResult> CreateTransporterAsync(TransporterCreateRequestDto requestDto)
         {
             var result = await _transporterService.CreateTransporterAsync(requestDto);
             return Ok(result);
