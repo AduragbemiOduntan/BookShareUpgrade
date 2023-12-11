@@ -2,6 +2,7 @@
 using BookShare.Common.Dto.Request;
 using BookShare.Common.Dto.Response;
 using BookShare.Common.Enum;
+using BookShare.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,11 +22,10 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("create-book")]
-        [Authorize]
         public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _bookService.CreateBookAsync(userId, bookRequestDto);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.CreateBookAsync("Use this later", bookRequestDto);
             return Ok(result);
         }
 
@@ -39,6 +39,13 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> GetBookById(string id)
         {
             var result = await _bookService.GetBookByIdAsync(id);
+            return Ok(result);
+        }
+         [HttpGet("user-id/{userId}")]
+        public async Task<IActionResult> GetBooksByUserId(string userId)
+        {
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }
         [HttpGet("book-category")]
@@ -75,14 +82,6 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> GetBooksByListingType(ListingType listingType)
         {
             var result = await _bookService.GetBooksByListingTypeAsync(listingType);
-            return Ok(result);
-        }
-         [HttpGet("user-id")]
-        [Authorize]
-        public async Task<IActionResult> GetBooksByUserId()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }
 /*         [HttpGet("user-id")]

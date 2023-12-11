@@ -18,6 +18,7 @@ namespace BookShare.Common.Dto.Request
         public BookCategory? BookCategory { get; set; }
         [Required(ErrorMessage = "Subject is required")]
         public Subject Subject { get; set; }
+        public string? UserId { get; set; }
         [Range(0.01, double.MaxValue, ErrorMessage = "Market price must be greater than zero")]
         public decimal MarketPrice { get; set; }
    /*     [Range(0.01, double.MaxValue, ErrorMessage = "Selling price must be greater than zero")]*/

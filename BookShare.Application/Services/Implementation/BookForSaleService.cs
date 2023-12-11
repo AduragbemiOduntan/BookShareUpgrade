@@ -33,7 +33,7 @@ namespace BookShare.Application.Services.Implementation
                 bookRequestDto.ListingType = ListingType.Paid;
             }
             var book = _mapper.Map<BookForSale>(bookRequestDto);
-            book.UserId = userId;
+            //book.UserId = userId;
             await _repository.CreateAsync(book);
             await _repository.SaveChangesAync();
             var bookDto = _mapper.Map<BookResponseDto>(book);
