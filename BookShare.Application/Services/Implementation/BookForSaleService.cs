@@ -33,13 +33,12 @@ namespace BookShare.Application.Services.Implementation
                 bookRequestDto.ListingType = ListingType.Paid;
             }
             var book = _mapper.Map<BookForSale>(bookRequestDto);
-            book.UserId = userId;
+            //book.UserId = userId;
             await _repository.CreateAsync(book);
             await _repository.SaveChangesAync();
             var bookDto = _mapper.Map<BookResponseDto>(book);
             return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
         }
-        //-----> 
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetAllBooksAsync()
         {
             var books = await _repository.FindAll(false).ToListAsync();

@@ -21,11 +21,10 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("create-book")]
-        [Authorize]
         public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _bookService.CreateBookAsync(userId, bookRequestDto);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.CreateBookAsync("asssww2233", bookRequestDto);
             return Ok(result);
         }
 
@@ -77,11 +76,10 @@ namespace BookShare.Api.Controllers
             var result = await _bookService.GetBooksByListingTypeAsync(listingType);
             return Ok(result);
         }
-         [HttpGet("user-id")]
-        [Authorize]
-        public async Task<IActionResult> GetBooksByUserId()
+         [HttpGet("user-id/{userId}")]
+        public async Task<IActionResult> GetBooksByUserId(string userId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }

@@ -32,7 +32,8 @@ internal sealed class RequestService : IRequestService
         }
         var request = new Request()
         {
-            UserId = userId,
+            //UserId = userId,
+            UserId = requestDto.UserId,
             LocationId = requestDto.LocationId,
             Books = books
         };
