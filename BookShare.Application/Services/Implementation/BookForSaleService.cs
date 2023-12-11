@@ -39,7 +39,6 @@ namespace BookShare.Application.Services.Implementation
             var bookDto = _mapper.Map<BookResponseDto>(book);
             return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
         }
-        //-----> 
         public async Task<StandardResponse<ICollection<BookResponseDto>>> GetAllBooksAsync()
         {
             var books = await _repository.FindAll(false).ToListAsync();

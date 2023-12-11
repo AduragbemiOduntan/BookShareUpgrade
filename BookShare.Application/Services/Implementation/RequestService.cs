@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookShare.Application.Services.Implementation;
 
-internal sealed class RequestService : IRequestService
+public class RequestService : IRequestService
 {
     private readonly IRepositoryBase<BookForSale> _bookRepository;
     private readonly IRepositoryBase<Request> _requestRepository;
@@ -32,7 +32,8 @@ internal sealed class RequestService : IRequestService
         }
         var request = new Request()
         {
-            UserId = userId,
+            //UserId = userId,
+            UserId = requestDto.UserId,
             LocationId = requestDto.LocationId,
             Books = books
         };

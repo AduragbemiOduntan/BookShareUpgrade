@@ -6,7 +6,7 @@ namespace BookShare.Application.Services.Abstraction
 {
     public interface ITransporterService
     {
-        Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterRequestDto requestDto);
+        Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterCreateRequestDto requestDto);
         Task<StandardResponse<TransporterResponseDto>> UpdateTransporterAsync(string id, bool trackChanges, TransporterRequestDto requestDto);
         Task<StandardResponse<TransporterResponseDto>> FindTransporterByIdAsync(string id);
         Task<StandardResponse<IEnumerable<TransporterResponseDto>>> FindTransporterByLocationAsync(string city, string state);

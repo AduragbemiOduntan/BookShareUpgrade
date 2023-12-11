@@ -80,8 +80,6 @@ namespace BookShare.Api.Controllers
 
 
 
-
-
         const string htmlVerified = @"
                 <!DOCTYPE html>
                     <html lang=""en"">
