@@ -53,7 +53,7 @@ namespace BookShare.Application.Services.Implementation
             };
             if(role == "Transporter")
             {
-                await _transporterService.CreateTransporterAsync(new TransporterRequestDto
+                await _transporterService.CreateTransporterAsync(new TransporterCreateRequestDto
                 {
                     UserId = user.Id,
                     CompanyName = requestDto.CompanyName,
@@ -61,7 +61,7 @@ namespace BookShare.Application.Services.Implementation
                 });
 
             }
-            _userManager.AddToRoleAsync(user, role);
+            await _userManager.AddToRoleAsync(user, role);
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             string encodedToken = System.Text.Encodings.Web.UrlEncoder.Default.Encode(token);
             string callback_url = httpRequest.Scheme + "://" + httpRequest.Host + $"/api/auth/confirm-email/{requestDto.Email}/{encodedToken}";

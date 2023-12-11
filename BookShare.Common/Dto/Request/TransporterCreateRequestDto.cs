@@ -4,6 +4,7 @@ namespace BookShare.Common.Dto.Request
 {
     public class TransporterCreateRequestDto
     {
+        public string UserId { get; set; }
         [Required(ErrorMessage = "Company name is required")]
         public string CompanyName { get; set; }
 
