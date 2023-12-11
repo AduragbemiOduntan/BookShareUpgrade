@@ -18,14 +18,13 @@ namespace BookShare.Application.Services.Implementation
             _repository = repository;
             _mapper = mapper;
         }
-        public async Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterRequestDto requestDto)
+        public async Task<StandardResponse<TransporterResponseDto>> CreateTransporterAsync(TransporterCreateRequestDto requestDto)
         {
             Transporter transporter = new Transporter();
             {
                 transporter.CompanyName = requestDto.CompanyName;
                 transporter.PhoneNumber = requestDto.PhoneNumber;
                 transporter.LogoUrl = requestDto.LogoUrl;
-                transporter.UserId = requestDto.UserId;
             };
             //var transporter = _mapper.Map<Transporter>(requestDto);
             await _repository.CreateAsync(transporter);
