@@ -9,5 +9,5 @@ public record RequestResponseDto
     public bool IsDelivered { get; init; }
     public bool IsPickUp { get; init; }
     public string LocationId { get; init; }
-    public ICollection<BookForSaleDto> Books { get; init; }
+    public ICollection<BookResponseDto> Books { get; init; }
 }
