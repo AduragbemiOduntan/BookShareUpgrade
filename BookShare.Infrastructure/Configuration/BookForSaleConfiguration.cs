@@ -31,7 +31,8 @@ namespace BookShare.Infrastructure.Configuration
                      BookCategory = BookCategory.TextBook,
                      MarketPrice = 8000.00m,
                      SellingPrice = 2000.00m,
-                     ImageUrl = "https://ibb.co/qsTTbGv"
+                     ImageUrl = "https://ibb.co/qsTTbGv",
+                     ListingType = ListingType.Paid
                  },
 
                 new BookForSale
@@ -42,7 +43,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 9000.00m,
                     SellingPrice = 4000.00m,
-                    ImageUrl = "https://ibb.co/m45tnVm"
+                    ImageUrl = "https://ibb.co/m45tnVm",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -53,7 +55,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 2499.99m,
                     SellingPrice = 1299.99m,
-                    ImageUrl = "https://ibb.co/WVzW49p"
+                    ImageUrl = "https://ibb.co/WVzW49p",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -64,7 +67,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 5999.99m,
                     SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/Q6XsX4J"
+                    ImageUrl = "https://ibb.co/Q6XsX4J",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -75,7 +79,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 2999.99m,
                     SellingPrice = 1499.99m,
-                    ImageUrl = "https://ibb.co/ZhBXwtS"
+                    ImageUrl = "https://ibb.co/ZhBXwtS",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -85,8 +90,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Practical insights and experiments in the field of chemistry.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/qDDskmB"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/qDDskmB",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -96,8 +102,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Comprehensive physics guide for SSCE and UTME exams.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 2499.99m,
-                    ImageUrl = "https://ibb.co/NTMt2Sv"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/NTMt2Sv",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -107,8 +114,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "In-depth study of organic chemistry principles and reactions.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 4499.99m,
-                    SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/ncsvd1j"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/ncsvd1j",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -118,8 +126,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Comprehensive guide to general mathematical concepts.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/6RkfmFB"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/6RkfmFB",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -129,8 +138,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Physics textbook designed for modern school curricula.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1799.99m,
-                    ImageUrl = "https://ibb.co/QFmGNjR"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/QFmGNjR",
+                    ListingType = ListingType.Free
                 },
                 //Novels
                 new BookForSale
@@ -141,7 +151,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 8000.00m,
                     SellingPrice = 2000.00m,
-                    ImageUrl = "https://ibb.co/7Vb2yM0"
+                    ImageUrl = "https://ibb.co/7Vb2yM0",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -152,7 +163,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 9000.00m,
                     SellingPrice = 4000.00m,
-                    ImageUrl = "https://ibb.co/NTWqctd"
+                    ImageUrl = "https://ibb.co/NTWqctd",
+                    ListingType = ListingType.Paid
+
                 },
 
                 new BookForSale
@@ -163,7 +176,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 2499.99m,
                     SellingPrice = 1299.99m,
-                    ImageUrl = "https://ibb.co/PQTcDJv"
+                    ImageUrl = "https://ibb.co/PQTcDJv",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -174,7 +188,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 5999.99m,
                     SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/NTPFxRr"
+                    ImageUrl = "https://ibb.co/NTPFxRr",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -185,7 +200,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 2999.99m,
                     SellingPrice = 1499.99m,
-                    ImageUrl = "https://ibb.co/mvpjYLb"
+                    ImageUrl = "https://ibb.co/mvpjYLb",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -195,8 +211,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Embark on a literary journey that explores the intricacies of personal and academic growth, as characters navigate the challenges of self-discovery within the realm of education.",
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/TgzzWF3"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/TgzzWF3",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -206,8 +223,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Dive into a thought-provoking narrative that envisions the future of education, its transformative power, and the impact it leaves on the last generation of graduates in a changing world.",
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 2499.99m,
-                    ImageUrl = "https://ibb.co/tKhXZVh"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/tKhXZVh",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -217,8 +235,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Experience the enchanting tale of a journey through science and technology, where small yet impactful teaching methods lead to profound discoveries and innovations.",
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 4499.99m,
-                    SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/1XQJC2M"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/1XQJC2M",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -228,8 +247,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Embark on a captivating exploration of general educational studies, where the ladder to success is built with knowledge, insights, and a comprehensive understanding of key concepts.",
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/NZstpRt"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/NZstpRt",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -239,8 +259,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Delve into the enthralling narrative of academic disciplines intersecting within the realm of education, symbolized by the reflective 'Mirror' and the illuminating 'Lamp' guiding the way.",
                     BookCategory = BookCategory.Novel,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1799.99m,
-                    ImageUrl = "https://ibb.co/vz6pGWg"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/vz6pGWg",
+                    ListingType = ListingType.Free
                 },
                 //Journals
                 new BookForSale
@@ -251,7 +272,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.Article,
                     MarketPrice = 8000.00m,
                     SellingPrice = 2000.00m,
-                    ImageUrl = "https://ibb.co/x35LZ3s"
+                    ImageUrl = "https://ibb.co/x35LZ3s",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -262,7 +284,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 9000.00m,
                     SellingPrice = 4000.00m,
-                    ImageUrl = "https://ibb.co/s2pTv7W"
+                    ImageUrl = "https://ibb.co/s2pTv7W",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -273,7 +296,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 2499.99m,
                     SellingPrice = 1299.99m,
-                    ImageUrl = "https://ibb.co/wKk93Fq"
+                    ImageUrl = "https://ibb.co/wKk93Fq",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -284,7 +308,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 5999.99m,
                     SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/N97d49F"
+                    ImageUrl = "https://ibb.co/N97d49F",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -295,7 +320,8 @@ namespace BookShare.Infrastructure.Configuration
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 2999.99m,
                     SellingPrice = 1499.99m,
-                    ImageUrl = "https://ibb.co/WvtS13k"
+                    ImageUrl = "https://ibb.co/WvtS13k",
+                    ListingType = ListingType.Paid
                 },
 
                 new BookForSale
@@ -305,8 +331,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Mastering essential words to enhance vocabulary and language skills.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/PFMYxSn"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/PFMYxSn",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -316,8 +343,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Exploring innovative approaches to development in various fields.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 2499.99m,
-                    ImageUrl = "https://ibb.co/Z6zLqwD"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/Z6zLqwD",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -327,8 +355,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "In-depth study of science and technology principles.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 4499.99m,
-                    SellingPrice = 2999.99m,
-                    ImageUrl = "https://ibb.co/DWT5wQm"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/DWT5wQm",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -338,8 +367,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Comprehensive guide to general educational studies and their concepts.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3999.99m,
-                    SellingPrice = 1999.99m,
-                    ImageUrl = "https://ibb.co/8YQLsfx"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/8YQLsfx",
+                    ListingType = ListingType.Free
                 },
 
                 new BookForSale
@@ -349,8 +379,9 @@ namespace BookShare.Infrastructure.Configuration
                     BookDescription = "Explore the dynamic intersection of various academic disciplines within the realm of education.",
                     BookCategory = BookCategory.TextBook,
                     MarketPrice = 3499.99m,
-                    SellingPrice = 1799.99m,
-                    ImageUrl = "https://ibb.co/SmJkzYp"
+                    SellingPrice = 0.00m,
+                    ImageUrl = "https://ibb.co/SmJkzYp",
+                    ListingType = ListingType.Free
                 }
 
 
