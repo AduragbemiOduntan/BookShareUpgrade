@@ -21,6 +21,7 @@ namespace BookShare.Api.Controllers
         [HttpPost("create-transporter")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> CreateTransporterAsync(TransporterRequestDto requestDto)
         {
             var result = await _transporterService.CreateTransporterAsync(requestDto);
@@ -28,6 +29,7 @@ namespace BookShare.Api.Controllers
         }
         [HttpPut("update-transporter")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> UpdateTransporterAsync(string id, TransporterRequestDto requestDto)
         {
@@ -36,7 +38,8 @@ namespace BookShare.Api.Controllers
         }
         [HttpGet("get-transporter-by-id")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
-        [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(404, Type = typeof(StandardResponse <string>))]
         public async Task<IActionResult> FindTransporterByIdAsync(string id)
         {
             var result = await _transporterService.FindTransporterByIdAsync(id);
@@ -44,6 +47,7 @@ namespace BookShare.Api.Controllers
         }
         [HttpGet("get-all-transporters")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> FindAllTransporterAsync()
         {
             var result = await _transporterService.FindAllTransportersAsync();
@@ -52,6 +56,7 @@ namespace BookShare.Api.Controllers
         [HttpGet("get-transporters-by-location")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> FindTransporterByLocationAsync(string city, string state)
         {
             var result = await _transporterService.FindTransporterByLocationAsync(city, state);
@@ -60,7 +65,7 @@ namespace BookShare.Api.Controllers
         [HttpGet("get-transporters-by-companyName")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
-        [SwaggerResponse(400, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> FindTransporterByCompanyNameAsync(string companyName)
         {
             var result = await _transporterService.FindTransporterByCompanyNameAsync(companyName);
@@ -68,6 +73,7 @@ namespace BookShare.Api.Controllers
         }      
         [HttpDelete("delete-transporter")]
         [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(401, Type = typeof(StandardResponse<string>))]
         [SwaggerResponse(404, Type = typeof(StandardResponse<string>))]
         public async Task<IActionResult> DeeleteTransporterAsync(string id)
         {
