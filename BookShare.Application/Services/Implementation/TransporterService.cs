@@ -22,9 +22,11 @@ namespace BookShare.Application.Services.Implementation
         {
             Transporter transporter = new Transporter();
             {
+                transporter.UserId = requestDto.UserId;
                 transporter.CompanyName = requestDto.CompanyName;
                 transporter.PhoneNumber = requestDto.PhoneNumber;
                 transporter.LogoUrl = requestDto.LogoUrl;
+                transporter.LocationId = requestDto.LocationId;
             };
             //var transporter = _mapper.Map<Transporter>(requestDto);
             await _repository.CreateAsync(transporter);

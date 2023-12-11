@@ -53,7 +53,7 @@ namespace BookShare.Application.Services.Implementation
             };
             if(role == "Transporter")
             {
-                await _transporterService.CreateTransporterAsync(new TransporterRequestDto
+                await _transporterService.CreateTransporterAsync(new TransporterCreateRequestDto
                 {
                     UserId = user.Id,
                     CompanyName = requestDto.CompanyName,
