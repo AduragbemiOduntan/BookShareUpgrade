@@ -1,4 +1,5 @@
 ﻿using BookShare.Common.Enum;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,9 +16,8 @@ namespace BookShare.Common.Dto.Request
         public decimal MarketPrice { get; set; }
         [Column(TypeName = "money")]
         public decimal? SellingPrice { get; set; }
-        public string? ImageUrl { get; set; }
         public ListingType? ListingType { get; set; }
-
+        public IFormFile ImageUrl { get; set; }
         /*
                 [Required(ErrorMessage = "Book name is required")]
                 public string BookName{ get; set; }

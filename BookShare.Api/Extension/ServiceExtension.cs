@@ -38,7 +38,7 @@ namespace BookShare.Api.Extension
             services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IBookForSaleService, BookForSaleService>();
             services.AddScoped<IUserService, UserService>();
-            
+            services.AddScoped<IPhotoService, PhotoService>();
 
 
 

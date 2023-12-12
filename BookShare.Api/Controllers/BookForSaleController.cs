@@ -21,13 +21,19 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("create-book")]
-        public async Task<IActionResult> CreateBook(BookRequestDto bookRequestDto)
+        public async Task<IActionResult> CreateBook([FromForm] BookRequestDto bookRequestDto)
         {
-            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _bookService.CreateBookAsync("asssww2233", bookRequestDto);
+            var result = await _bookService.CreateBookAsync(bookRequestDto);
             return Ok(result);
         }
 
+        [HttpPost("book-image")]
+        public async Task<IActionResult> UploadBookImage(IFormFile file, string id)
+        {
+            var book = await _bookService.GetBookByIdAsync(id);
+            var result = await _bookService.UploadBookImageAsync(id, file);
+            return Ok(StandardResponse<object>.Success("Image uploaded successfully", new { imgUrl = result }, 200));
+        }
         [HttpGet("all-books")]
         public async Task<IActionResult> GetAllBooksAsync()
         {
@@ -76,19 +82,22 @@ namespace BookShare.Api.Controllers
             var result = await _bookService.GetBooksByListingTypeAsync(listingType);
             return Ok(result);
         }
-         [HttpGet("user-id/{userId}")]
+         [HttpGet("user-id")]
         public async Task<IActionResult> GetBooksByUserId(string userId)
         {
            // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }
-/*         [HttpGet("user-id")]
-        public async Task<IActionResult> GetBooksByUserId(string id)
-        {
-            var result = await _bookService.GetBooksByUserId(id);
-            return Ok(result);
-        }*/
+
+
+
+        /*         [HttpGet("user-id")]
+                public async Task<IActionResult> GetBooksByUserId(string id)
+                {
+                    var result = await _bookService.GetBooksByUserId(id);
+                    return Ok(result);
+                }*/
 
     }
 }
