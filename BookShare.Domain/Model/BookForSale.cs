@@ -16,7 +16,7 @@ namespace BookShare.Domain.Model
         public decimal? SellingPrice { get; set; }
         public string? ImageUrl { get; set; }
         public ListingType? ListingType { get; set; }
-
+        
         public string? Author { get; set; }
         public string? Publisher { get; set; }
         public EducationLevel? EducationLevel { get; set; }
