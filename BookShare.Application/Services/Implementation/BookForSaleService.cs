@@ -56,7 +56,7 @@ namespace BookShare.Application.Services.Implementation
             return StandardResponse<BookResponseDto>.Success("Creation successful", book, 201);
         }*/
 
-        public async Task<StandardResponse<BookResponseDto>> CreateBookAsync(BookRequestDto bookRequestDto)
+        public async Task<StandardResponse<BookResponseDto>> CreateBookAsync(string userId, BookRequestDto bookRequestDto)
         {
             if (bookRequestDto.SellingPrice == null || bookRequestDto.SellingPrice == 0)
             {
@@ -68,14 +68,15 @@ namespace BookShare.Application.Services.Implementation
             }
 
             var createdBook = _mapper.Map<BookForSale>(bookRequestDto);
+            createdBook.UserId = userId;
             await _repository.CreateAsync(createdBook);
             await _repository.SaveChangesAync();
 
             var bookDto = _mapper.Map<BookResponseDto>(createdBook);
-            string url = await UploadBookImageAsync(createdBook.BookForSaleId, bookRequestDto.ImageUrl);
+            /*string url = await UploadBookImageAsync(createdBook.BookForSaleId, bookRequestDto.ImageUrl);
             bookDto.ImageUrl = url;
             _repository.Update(createdBook);
-            await _repository.SaveChangesAync();
+            await _repository.SaveChangesAync();*/
 
             return StandardResponse<BookResponseDto>.Success("Creation successful", bookDto, 201);
         }

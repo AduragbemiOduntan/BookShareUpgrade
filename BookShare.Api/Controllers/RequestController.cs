@@ -1,5 +1,6 @@
 ﻿using BookShare.Application.Services.Abstraction;
 using BookShare.Common.Dto.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -17,22 +18,25 @@ public class RequestController : ControllerBase
     }
 
     [HttpPost("create-request")]//User
+    [Authorize]
     public async Task<IActionResult> CreateRequest( [FromBody] CreateRequestDto requestDto)
     {
-        //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var response = await _requestService.CreateRequestAsync("will use this later", requestDto);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var response = await _requestService.CreateRequestAsync(userId, requestDto);
         return Ok(response);
     }
 
     [HttpPut("cancel-request/{requestId}")] //User
+    [Authorize]
     public async Task<IActionResult> CancelRequest(string requestId)
     {
-        //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var response = await _requestService.CancelRequest("will use this later", requestId);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var response = await _requestService.CancelRequest(userId, requestId);
         return Ok(response);
     }
 
     [HttpPut("confirm-request-delivery")]//User
+    [Authorize]
     public async Task<IActionResult> ConfirmRequestDelivery([FromBody] string requestId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -41,6 +45,7 @@ public class RequestController : ControllerBase
     }
 
     [HttpPut("confirm-request-received")]//User 
+    [Authorize]
     public async Task<IActionResult> ConfirmRequestReceived([FromBody] string requestId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -48,10 +53,10 @@ public class RequestController : ControllerBase
         return Ok(response);
     }
 
-    [HttpGet("user-requests-by-userid/{userId}")]//User
-    public async Task<IActionResult> GetAllUserRequestByUserId(string userId)
+    [HttpGet("get-requests-by-userid")]//User
+    public async Task<IActionResult> GetAllUserRequestByUserId()
     {
-        //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var response = await _requestService.GetAllUserRequestsByUserId(userId);
         return Ok(response);
     }
@@ -78,6 +83,7 @@ public class RequestController : ControllerBase
     }
 
     [HttpGet("user-requests-by-date/{requestDate}")]//User
+    [Authorize]
     public async Task<IActionResult> GetUserRequestsByDate([FromQuery] DateOnly requestDate)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

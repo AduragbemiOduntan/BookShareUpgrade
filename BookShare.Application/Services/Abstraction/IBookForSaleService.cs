@@ -9,7 +9,7 @@ namespace BookShare.Application.Services.Abstraction
     {
         Task<StandardResponse<ICollection<BookResponseDto>>> GetAllBooksAsync();
         Task<StandardResponse<BookResponseDto>> GetBookByIdAsync(string id);
-        Task<StandardResponse<BookResponseDto>> CreateBookAsync(BookRequestDto bookRequestDto);
+        Task<StandardResponse<BookResponseDto>> CreateBookAsync(string userId, BookRequestDto bookRequestDto);
         Task<StandardResponse<ICollection<BookResponseDto>>> GetBookByCategoryAsync(BookCategory bookCategory);
         Task<StandardResponse<ICollection<BookResponseDto>>> GetBooksByNameAsync(string bookName);
         Task<StandardResponse<ICollection<BookResponseDto>>> GetBookByKeyWordAsync(string keyword);

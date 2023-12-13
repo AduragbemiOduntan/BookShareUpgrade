@@ -21,71 +21,80 @@ namespace BookShare.Api.Controllers
         }
 
         [HttpPost("create-book")]
+        [Authorize]
         public async Task<IActionResult> CreateBook([FromForm] BookRequestDto bookRequestDto)
         {
-            var result = await _bookService.CreateBookAsync(bookRequestDto);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.CreateBookAsync(userId, bookRequestDto);
             return Ok(result);
         }
 
-        [HttpPost("book-image")]
+        [HttpPost("upload-book-image")]
         public async Task<IActionResult> UploadBookImage(IFormFile file, string id)
         {
-            var book = await _bookService.GetBookByIdAsync(id);
+            //var book = await _bookService.GetBookByIdAsync(id);
             var result = await _bookService.UploadBookImageAsync(id, file);
             return Ok(StandardResponse<object>.Success("Image uploaded successfully", new { imgUrl = result }, 200));
         }
-        [HttpGet("all-books")]
+        [HttpGet("get-all-books")]
         public async Task<IActionResult> GetAllBooksAsync()
         {
             var result = await _bookService.GetAllBooksAsync();
             return Ok(result);
         }
-        [HttpGet("id")]
+        [HttpGet("get-by-id")]
         public async Task<IActionResult> GetBookById(string id)
         {
             var result = await _bookService.GetBookByIdAsync(id);
             return Ok(result);
         }
-        [HttpGet("book-category")]
+        [HttpGet("get-by-book-category")]
         public async Task<IActionResult> GetBookByCategory(BookCategory bookCategory)
         {
             var result = await _bookService.GetBookByCategoryAsync(bookCategory);
             return Ok(result);
         }
-        [HttpGet("book-name")]
+        [HttpGet("get-by-book-name")]
         public async Task<IActionResult> GetBookByName(string name)
         {
             var result = await _bookService.GetBooksByNameAsync(name);
             return Ok(result);
         }
-        [HttpGet("keyword")]
+        [HttpGet("get-by-keyword")]
         public async Task<IActionResult> GetBookByKeyWordAsync(string keyword)
         {
             var result = await _bookService.GetBookByKeyWordAsync(keyword);
             return Ok(result);
         }
-        [HttpGet("education-level")]
+        [HttpGet("get-by-education-level")]
         public async Task<IActionResult> GetBooksByEducationLevel(EducationLevel educationLevel)
         {
             var result = await _bookService.GetBooksByEducationLevelAsync(educationLevel);
             return Ok(result);
         }
-        [HttpGet("subject")]
+        [HttpGet("get-by-subject")]
         public async Task<IActionResult> GetBooksBySubject(Subject subject)
         {
             var result = await _bookService.GetBooksBySubjectAsync(subject);
             return Ok(result);
         }
-        [HttpGet("listing-type")]
+        [HttpGet("get-by-listing-type")]
         public async Task<IActionResult> GetBooksByListingType(ListingType listingType)
         {
             var result = await _bookService.GetBooksByListingTypeAsync(listingType);
             return Ok(result);
         }
-         [HttpGet("user-id")]
+         [HttpGet("get-by-user-id")]
+        public async Task<IActionResult> GetBooksByUserId()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _bookService.GetBooksByUserId(userId);
+            return Ok(result);
+        }
+        [HttpGet("get-by-user-id/{userId}")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> GetBooksByUserId(string userId)
         {
-           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _bookService.GetBooksByUserId(userId);
             return Ok(result);
         }

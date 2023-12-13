@@ -33,7 +33,7 @@ public class RequestService : IRequestService
         var request = new Request()
         {
             //UserId = userId,
-            UserId = requestDto.UserId,
+            UserId = userId,
             LocationId = requestDto.LocationId,
             Books = books
         };

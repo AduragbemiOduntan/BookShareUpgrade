@@ -26,7 +26,7 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> RegisterUser([FromForm] UserSignUpRequestDto requestDto)
         {
             var result = await _authService.RegisterUser(requestDto, Request);
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
 
@@ -37,7 +37,7 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> Login([FromForm] UserLoginRequestDto requestDto)
         {
             var result = await _authService.ValidateAndCreateToken(requestDto);
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("activate-email/{email}")]
@@ -46,7 +46,7 @@ namespace BookShare.Api.Controllers
         public async Task<IActionResult> ActivateEmail(string email)
         {
             var result = await _authService.GenerateEmailActivationToken(email, Request);
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
 
         }
         [HttpPost("add-admin")]

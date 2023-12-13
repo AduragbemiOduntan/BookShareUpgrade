@@ -1,6 +1,7 @@
 ﻿using BookShare.Application.Services.Abstraction;
 using BookShare.Common.Dto.Request;
 using BookShare.Common.RequestFeature;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -14,35 +15,36 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [HttpPost]
+    /*[HttpPost]
+    [Authorize(Roles ="Admin")]
     public async Task<IActionResult> CreateUser([FromBody] UserCreateRequestDto requestDto)
     {
         var result = await _userService.CreateUser(requestDto);
         return StatusCode(result.StatusCode, result);
-    }
+    }*/
 
-    [HttpDelete("{id}")]
+    [HttpDelete("delete-user-by-id/{id}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
         await _userService.DeleteUser(id, trackChanges: false);
         return NoContent();
     }
 
-    [HttpGet]
+    [HttpGet("get-all-users")]
     public async Task<IActionResult> GetAllUsers([FromQuery] UserRequestParameters requestParameter)
     {
         var result = await _userService.GetAllUsersAsync(requestParameter, trackChanges: false);
         return StatusCode(result.StatusCode, result);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("get-user-by-id/{id}")]
     public async Task<IActionResult> GetUserById(string id)
     {
         var result = await _userService.GetUserByIdAsync(id, trackChanges: false);
         return StatusCode(result.StatusCode, result);
     }
 
-    [HttpGet("by-email/{email}")]
+    [HttpGet("get-by-email/{email}")]
     public async Task<IActionResult> GetUserByEmail(string email)
     {
         var result = await _userService.GetUserByEmailAsync(email, trackChanges: false);
